@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "2f93e2f3-fdb3-4a01-a1d6-9dbf64c4e00e",
+		"name": "sodality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17385921"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"abc01234\", \n  \"email\":\"abc@gmail.com\",\n  \"password\": \"abc@01234\",\n  \"dash\": \"dfasdf32rfafdfdwe\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"abc01234\",\n  \"password\": \"abc@01234\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_user_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/643f4109f0b40d4ade875557",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"643f4109f0b40d4ade875557"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11YjAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZHdlIiwiZW1haWwiOiJtdWIwMTIzNEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjQ0MGFlZGE3MWNiNTgzMDZkNGU3ZTMwIiwiZXhwIjoxNjgxOTY4OTI1fQ.Un8-YrPAjwewFzdaZN88krPVQ3_y0L-AwxmGbW8S-lo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\" : \"abc13\",\n  \"subscriber_count\" : 132,\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme dsf\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEzIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsImVtYWlsIjoiIiwidXNlcl9pZCI6IjY0NDBhZWRhNzFjYjU4MzA2ZDRlN2UzMCIsImV4cCI6MTY4MTk3Nzc2M30.jcsNdItgSivCqLTDha3FqmXgAXNDSE2yc7hhVYSt6Mc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/profile/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "content",
+			"item": [
+				{
+					"name": "post_content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11YjAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZHdlIiwiZW1haWwiOiJtdWIwMTIzNEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjQ0MTU2NGU2MjRlZGUyOWVhMjJlZjY0IiwiZXhwIjoxNjgyMDEwNzQzfQ.EsHwlbibArzpPgJlB6RyHtOSom2oYWocjrnedjRH9sw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"type\" : \"mp4\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/content/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"content",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_content_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/content/6441567d624ede29ea22ef65",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"content",
+								"6441567d624ede29ea22ef65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Content by Title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/content/h",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"content",
+								"h"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Own Content",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11YjAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZHdlIiwiZW1haWwiOiJtdWIwMTIzNEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjQ0MTU2NGU2MjRlZGUyOWVhMjJlZjY0IiwiZXhwIjoxNjgyMDEwNzQzfQ.EsHwlbibArzpPgJlB6RyHtOSom2oYWocjrnedjRH9sw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/all/content",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"all",
+								"content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Content By Directory Nsme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/content/gaming/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"content",
+								"gaming",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all content",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/content/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"content",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "followers",
+			"item": [
+				{
+					"name": "Follow creator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZmR3ZSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQxNWQwNzQ0M2I1MjM1N2NkMjliOTIiLCJleHAiOjE2ODIwMTI0NjB9.5yOL3T2vR6fEUaNRQA5Ma_mILR02T-AijR5ikuanNK8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/follow/6440aeda71cb58306d4e7e30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"follow",
+								"6440aeda71cb58306d4e7e30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Followers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZmR3ZSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQxNWQwNzQ0M2I1MjM1N2NkMjliOTIiLCJleHAiOjE2ODIwMTI0NjB9.5yOL3T2vR6fEUaNRQA5Ma_mILR02T-AijR5ikuanNK8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/6441564e624ede29ea22ef64/followers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"6441564e624ede29ea22ef64",
+								"followers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow ceator",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11YjAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZHdlIiwiZW1haWwiOiJtdWIwMTIzNEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjQ0MGViZGRhMTgyYTAwODFjOGMzZTVjIiwiZXhwIjoxNjgxOTgzNTE0fQ.p14FPGBgtcIiUEyuW1GrU1fWLxZKMQy850UyHkgUuIA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/unfollow/6440aeda71cb58306d4e7e30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"unfollow",
+								"6440aeda71cb58306d4e7e30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
