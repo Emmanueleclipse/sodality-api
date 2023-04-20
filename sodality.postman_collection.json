@@ -177,7 +177,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"type\" : \"mp4\"\n}\n",
+							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"audio\" : \"audio\",\n  \"video\" : \"video\",\n  \"category_name\": \"gaming\",\n  \"type\" : \"mp4\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
