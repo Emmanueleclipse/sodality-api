@@ -138,3 +138,28 @@ var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http
 
 	middlewares.SuccessArrRespond(allContent, rw)
 })
+
+var DeleteContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	props, _ := r.Context().Value("props").(jwt.MapClaims)
+	params := mux.Vars(r)
+
+	contentID, _ := primitive.ObjectIDFromHex(params["id"])
+	userID := props["user_id"].(string)
+
+	filter := bson.M{"$and": []interface{}{
+		bson.M{"_id": contentID},
+		bson.M{"user_id": userID}}}
+
+	collection := client.Database("sodality").Collection("content")
+	del, err := collection.DeleteOne(context.TODO(), filter)
+	if err != nil && err != mongo.ErrNoDocuments {
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	if del.DeletedCount == 0 {
+		middlewares.ErrorResponse("you have no access to delete this content", rw)
+		return
+	}
+
+	middlewares.SuccessResponse("content delete successfully", rw)
+})
