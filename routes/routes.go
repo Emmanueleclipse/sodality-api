@@ -30,7 +30,7 @@ func Routes() *mux.Router {
 	// Creator content
 	creator := api.PathPrefix("/creator").Subrouter()
 	creator.HandleFunc("/content/{id}", controllers.GetContentByID).Methods("GET")
-	creator.HandleFunc("/content/{category_name}/", controllers.GetCreatorDirectoryByDirectoryName).Methods("GET")
+	creator.HandleFunc("/content/category/{category_name}/", controllers.GetCreatorDirectoryByDirectoryName).Methods("GET")
 	creator.HandleFunc("/all/content", middlewares.IsAuthorized(controllers.GetOwnContent)).Methods("GET")
 
 	// Followers endpoint

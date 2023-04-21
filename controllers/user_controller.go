@@ -171,6 +171,9 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	if len(newUser.Bio) <= 0 {
 		newUser.Bio = user.Bio
 	}
+	if len(newUser.Role) <= 0 {
+		newUser.Role = user.Role
+	}
 
 	res, err := collection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "_id", Value: user.ID}}, bson.D{
 		primitive.E{
@@ -182,6 +185,7 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 				primitive.E{Key: "avatar", Value: newUser.Avatar},
 				primitive.E{Key: "dash", Value: newUser.Dash},
 				primitive.E{Key: "bio", Value: newUser.Bio},
+				primitive.E{Key: "role", Value: newUser.Role},
 			},
 		},
 	})
