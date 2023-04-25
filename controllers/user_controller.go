@@ -34,14 +34,19 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		middlewares.ErrorResponse("username is already taken", rw)
 		return
 	}
-	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "email", Value: user.Email}}).Decode(&existingUser)
-	if err == nil {
-		middlewares.ErrorResponse("email is already exists", rw)
-		return
-	}
+	// err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "email", Value: user.Email}}).Decode(&existingUser)
+	// if err == nil {
+	// 	middlewares.ErrorResponse("email is already exists", rw)
+	// 	return
+	// }
 	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "dash", Value: user.Dash}}).Decode(&existingUser)
 	if err == nil {
 		middlewares.ErrorResponse("dash is already exists", rw)
+		return
+	}
+	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "mnemonic", Value: user.Mnemonic}}).Decode(&existingUser)
+	if err == nil {
+		middlewares.ErrorResponse("Mnemonic Invalid", rw)
 		return
 	}
 	passwordHash, err := middlewares.HashPassword(user.Password)
@@ -69,11 +74,11 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	}
 	collection := client.Database("sodality").Collection("users")
 	var existingUser models.User
-	if len(user.Username) > 0 {
-		err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: user.Username}}).Decode(&existingUser)
-	} else {
-		err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "email", Value: user.Email}}).Decode(&existingUser)
-	}
+	// if len(user.Username) > 0 {
+	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: user.Username}}).Decode(&existingUser)
+	// } else {
+	// err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "email", Value: user.Email}}).Decode(&existingUser)
+	// }
 	if err != nil {
 		middlewares.ErrorResponse("user doesn't exist", rw)
 		return
@@ -156,9 +161,9 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	if len(newUser.Username) <= 0 {
 		newUser.Username = user.Username
 	}
-	if len(newUser.Email) <= 0 {
-		newUser.Email = user.Email
-	}
+	// if len(newUser.Email) <= 0 {
+	// 	newUser.Email = user.Email
+	// }
 	if newUser.SubscriberCount <= 0 {
 		newUser.SubscriberCount = user.SubscriberCount
 	}
@@ -180,7 +185,7 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 			Key: "$set",
 			Value: bson.D{
 				primitive.E{Key: "username", Value: newUser.Username},
-				primitive.E{Key: "email", Value: newUser.Email},
+				// primitive.E{Key: "email", Value: newUser.Email},
 				primitive.E{Key: "subscriber_count", Value: newUser.SubscriberCount},
 				primitive.E{Key: "avatar", Value: newUser.Avatar},
 				primitive.E{Key: "dash", Value: newUser.Dash},
