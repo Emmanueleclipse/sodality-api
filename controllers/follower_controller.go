@@ -102,3 +102,24 @@ var GetCreatorFollowers = http.HandlerFunc(func(rw http.ResponseWriter, r *http.
 
 	middlewares.SuccessRespond(followersCount, rw)
 })
+
+var GetCreatorSupporter = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+
+	filter := bson.M{"$and": []interface{}{
+		bson.M{"expired_at": bson.M{"$gte": time.Now().UTC()}},
+		bson.M{"creator_id": params["creator_id"]},
+	}}
+
+	var supporterCount models.SupporterCount
+	collection := client.Database("sodality").Collection("donations")
+	count, err := collection.CountDocuments(context.TODO(), filter)
+	if err != nil && err != mongo.ErrNoDocuments {
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
+	supporterCount.Count = count
+
+	middlewares.SuccessRespond(supporterCount, rw)
+})

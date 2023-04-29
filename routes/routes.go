@@ -38,10 +38,22 @@ func Routes() *mux.Router {
 	setting := creator.PathPrefix("/setting").Subrouter()
 	setting.HandleFunc("/update", middlewares.IsAuthorized(controllers.CreatorSetting)).Methods("PUT")
 
-	// Followers endpoint
+	// followers endpoint
 	creator.HandleFunc("/follow/{creator_id}", middlewares.IsAuthorized(controllers.FollowCreator)).Methods("POST")
 	creator.HandleFunc("/unfollow/{creator_id}", middlewares.IsAuthorized(controllers.UnfollowCreator)).Methods("DELETE")
 	creator.HandleFunc("/{user_id}/followers/", controllers.GetCreatorFollowers).Methods("GET")
+
+	// supporter endpoint
+	creator.HandleFunc("/{creator_id}/supporter/", controllers.GetCreatorSupporter).Methods("GET")
+
+	// ipfs endpoint
+	file := api.PathPrefix("/file").Subrouter()
+	file.HandleFunc("/upload", controllers.UploadFile).Methods("POST")
+
+	// donation endpoint
+	donate := api.PathPrefix("/donate").Subrouter()
+	donate.HandleFunc("/", middlewares.IsAuthorized(controllers.DonateUser)).Methods("POST")
+	donate.HandleFunc("/content", middlewares.IsAuthorized(controllers.DonateContent)).Methods("POST")
 
 	return router
 }

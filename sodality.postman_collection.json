@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd01234\", \n  \"email\":\"abcd@gmail.com\",\n  \"role\": \"creator\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdffdwe\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd01234\", \n  \"role\": \"creator\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdffdwe\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,7 +77,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/643f4109f0b40d4ade875557",
+							"raw": "http://localhost:8080/api/v1/user/644bd0fbeaa41c31f21b5323",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -87,7 +87,7 @@
 								"api",
 								"v1",
 								"user",
-								"643f4109f0b40d4ade875557"
+								"644bd0fbeaa41c31f21b5323"
 							]
 						}
 					},
@@ -100,13 +100,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11YjAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZHdlIiwiZW1haWwiOiJtdWIwMTIzNEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjQ0MGFlZGE3MWNiNTgzMDZkNGU3ZTMwIiwiZXhwIjoxNjgxOTY4OTI1fQ.Un8-YrPAjwewFzdaZN88krPVQ3_y0L-AwxmGbW8S-lo",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmFmZGZmZHdlIiwidXNlcl9pZCI6IjY0NGNmZDYzYTNlOThhYTI1NzIxZjY5MCIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgyODAwODE3fQ.kXDibHkx6E2klexDCgHlpdocKOfcIvJvRPLcK1im11I",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\" : \"abc13\",\n  \"subscriber_count\" : 132,\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme dsf\"\n}\n",
+							"raw": "{\n  \"username\" : \"abcd01234\",\n  \"email\" : \"email@gmail.com\",\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme muc\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -137,7 +137,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEzIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsImVtYWlsIjoiIiwidXNlcl9pZCI6IjY0NDBhZWRhNzFjYjU4MzA2ZDRlN2UzMCIsImV4cCI6MTY4MTk3Nzc2M30.jcsNdItgSivCqLTDha3FqmXgAXNDSE2yc7hhVYSt6Mc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmFmZGZmZHdlIiwidXNlcl9pZCI6IjY0NGJkMGZiZWFhNDFjMzFmMjFiNTMyMyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgyNjk3NTEyfQ.XwWh5_cMie8aMaKAoHCuhAqJ0-SVz5lqCQi24Nqe7Xc",
 								"type": "text"
 							}
 						],
@@ -171,13 +171,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmFmZGZmZHdlIiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQyZDM3ZWY5MDRiYTM5ZGQ5NWY0OGQiLCJyb2xlIjoiY3JlYXRvciIsImV4cCI6MTY4MjEwODMyM30.jm0fxtx6BvyitoSZYB7hyRJuubfqvU9MqR8N0yedd3I",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4MDY1Nzh9.VGhcSKxQK_wYzM-uYsQXFwlzvF-gHuKq0hr5fauDa7U",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"type\" : \"mp4\"\n}\n",
+							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"ipfs_url\":\"enter ipfs url\",\n  \"type\" : \"mp4\",\n  \"content_type\":\"supporter\",\n  \"currency_type\":\"USD\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,7 +310,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/gaming/",
+							"raw": "http://localhost:8080/api/v1/creator/content/category/gaming/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -321,6 +321,7 @@
 								"v1",
 								"creator",
 								"content",
+								"category",
 								"gaming",
 								""
 							]
@@ -367,7 +368,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/follow/6440aeda71cb58306d4e7e30",
+							"raw": "http://localhost:8080/api/v1/creator/follow/6441564e624ede29ea22ef64",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -378,7 +379,7 @@
 								"v1",
 								"creator",
 								"follow",
-								"6440aeda71cb58306d4e7e30"
+								"6441564e624ede29ea22ef64"
 							]
 						}
 					},
@@ -481,6 +482,152 @@
 								"creator",
 								"setting",
 								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/mubashir/Videos/authenticator.mp4"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/file/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "donation",
+			"item": [
+				{
+					"name": "add donation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4MDY1Nzh9.VGhcSKxQK_wYzM-uYsQXFwlzvF-gHuKq0hr5fauDa7U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creator_id\": \"644bd0fbeaa41c31f21b5323\",\n    \"donate\": 50,\n    \"currency_type\": \"USD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/donate/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"donate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "donate content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4MDY1Nzh9.VGhcSKxQK_wYzM-uYsQXFwlzvF-gHuKq0hr5fauDa7U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content_id\": \"644bd32aeaa41c31f21b5325\",\n    \"donate\": 5,\n    \"currency_type\": \"USD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/donate/content",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"donate",
+								"content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Supporter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZmR3ZSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQxNWQwNzQ0M2I1MjM1N2NkMjliOTIiLCJleHAiOjE2ODIwMTI0NjB9.5yOL3T2vR6fEUaNRQA5Ma_mILR02T-AijR5ikuanNK8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporter/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"644bd0fbeaa41c31f21b5323",
+								"supporter",
+								""
 							]
 						}
 					},
