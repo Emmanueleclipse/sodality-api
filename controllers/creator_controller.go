@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"context"
-	"log"
 	"net/http"
 	middlewares "sodality/handlers"
 	"sodality/models"
@@ -34,7 +33,8 @@ var GetCreatorDirectoryByDirectoryName = http.HandlerFunc(func(rw http.ResponseW
 		var content models.Content
 		err := cursor.Decode(&content)
 		if err != nil {
-			log.Fatal(err)
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
 		}
 
 		allContent = append(allContent, &content)
@@ -62,7 +62,8 @@ var GetAllCreatorsContent = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 		var content models.GetAllContentWithCreatorResp
 		err := cursor.Decode(&content)
 		if err != nil {
-			log.Fatal(err)
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
 		}
 
 		allContent = append(allContent, &content)

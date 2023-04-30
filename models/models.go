@@ -49,7 +49,7 @@ type Content struct {
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
 	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
-	Locked       bool               `json:"locked,omitempty" bson:"locked,omitempty"`
+	Locked       bool               `json:"locked" bson:"locked"`
 	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt    time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
@@ -65,6 +65,8 @@ type GetAllContentWithCreatorResp struct {
 	Type         string             `json:"type,omitempty" bson:"type,omitempty"`
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
+	ContentType  string             `json:"content_type,omitempty" bson:"content_type,omitempty"`
+	Locked       bool               `json:"locked" bson:"locked"`
 	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	UpdatedAt    time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
@@ -99,6 +101,17 @@ type DonateContent struct {
 	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	UserID       string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	ContentID    string             `json:"content_id,omitempty" bson:"content_id,omitempty"`
+	Donate       float64            `json:"donate,omitempty" bson:"donate,omitempty"`
+	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ExpiredAt    time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
+}
+
+type DonateResp struct {
+	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	UserID       string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
+	User         User               `json:"user_detail,omitempty" bson:"user_detail,omitempty"`
+	CreatorID    string             `json:"creator_id,omitempty" bson:"creator_id,omitempty"`
 	Donate       float64            `json:"donate,omitempty" bson:"donate,omitempty"`
 	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`

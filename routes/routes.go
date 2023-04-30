@@ -34,6 +34,13 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/content/category/{category_name}/", controllers.GetCreatorDirectoryByDirectoryName).Methods("GET")
 	creator.HandleFunc("/all/content", middlewares.IsAuthorized(controllers.GetOwnContent)).Methods("GET")
 
+	// supporter get creator content
+	creator.HandleFunc("/content/{id}/supporter", middlewares.IsAuthorized(controllers.GetContentForSpecificSupporterByID)).Methods("GET")
+	creator.HandleFunc("/content/all/supporter/", middlewares.IsAuthorized(controllers.GetAllCreatorsContentForSpecificSupporter)).Methods("GET")
+	creator.HandleFunc("/{id}/supporter/", middlewares.IsAuthorized(controllers.GetCreatorContentsForSpecificSupporter)).Methods("GET")
+	creator.HandleFunc("/content/category/{category_name}/supporter", middlewares.IsAuthorized(controllers.GetCreatorDirectoryByDirectoryNameForSpecificSupporter)).Methods("GET")
+	creator.HandleFunc("/{creator_id}/supporters/record", controllers.GetCreatorSupportersRecord).Methods("GET")
+
 	// setting endpoint
 	setting := creator.PathPrefix("/setting").Subrouter()
 	setting.HandleFunc("/update", middlewares.IsAuthorized(controllers.CreatorSetting)).Methods("PUT")
@@ -44,7 +51,7 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/{user_id}/followers/", controllers.GetCreatorFollowers).Methods("GET")
 
 	// supporter endpoint
-	creator.HandleFunc("/{creator_id}/supporter/", controllers.GetCreatorSupporter).Methods("GET")
+	creator.HandleFunc("/{creator_id}/supporters/count", controllers.GetCreatorSupporter).Methods("GET")
 
 	// ipfs endpoint
 	file := api.PathPrefix("/file").Subrouter()

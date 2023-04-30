@@ -106,20 +106,32 @@ var GetCreatorFollowers = http.HandlerFunc(func(rw http.ResponseWriter, r *http.
 var GetCreatorSupporter = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
-	filter := bson.M{"$and": []interface{}{
-		bson.M{"expired_at": bson.M{"$gte": time.Now().UTC()}},
-		bson.M{"creator_id": params["creator_id"]},
-	}}
+	pipeline := bson.A{
+		bson.M{"$match": bson.M{"creator_id": params["creator_id"], "expired_at": bson.M{"$gte": time.Now().UTC()}}},
+		bson.M{"$group": bson.M{"_id": "$user_id", "count": bson.M{"$sum": 1}}},
+	}
 
-	var supporterCount models.SupporterCount
+	var supporterCount []bson.M
 	collection := client.Database("sodality").Collection("donations")
-	count, err := collection.CountDocuments(context.TODO(), filter)
+	cur, err := collection.Aggregate(context.TODO(), pipeline)
 	if err != nil && err != mongo.ErrNoDocuments {
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	defer cur.Close(context.Background())
 
-	supporterCount.Count = count
+	for cur.Next(context.Background()) {
+		var result bson.M
+		err := cur.Decode(&result)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+		supporterCount = append(supporterCount, result)
+	}
+	var totalCount models.SupporterCount
 
-	middlewares.SuccessRespond(supporterCount, rw)
+	totalCount.Count = int64(len(supporterCount))
+
+	middlewares.SuccessRespond(totalCount, rw)
 })

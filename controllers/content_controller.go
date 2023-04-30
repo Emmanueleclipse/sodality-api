@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -46,6 +45,7 @@ var PostContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 	}
 
 	content.UserID = userID.Hex()
+	content.Locked = true
 	content.CreatedAt = time.Now().UTC()
 
 	contentCollection := client.Database("sodality").Collection("content")
@@ -101,7 +101,8 @@ var GetOwnContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reques
 		var content models.Content
 		err := cursor.Decode(&content)
 		if err != nil {
-			log.Fatal(err)
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
 		}
 
 		allContent = append(allContent, &content)
@@ -130,7 +131,8 @@ var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http
 		var content models.Content
 		err := cursor.Decode(&content)
 		if err != nil {
-			log.Fatal(err)
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
 		}
 
 		allContent = append(allContent, &content)

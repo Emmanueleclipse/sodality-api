@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd01234\", \n  \"role\": \"creator\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdffdwe\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd0123\", \n  \"role\": \"supporter\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdffdwe\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,7 +171,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4MDY1Nzh9.VGhcSKxQK_wYzM-uYsQXFwlzvF-gHuKq0hr5fauDa7U",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4NDQ0NTV9.p3HP8HmKj3nCzKe9b7eiRgpdMm6ZB54gcpFVxedrbk8",
 								"type": "text"
 							}
 						],
@@ -536,13 +536,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiI2M2VmYzE1ZDJlZGY4OWRkNWY0OWMwYTMiLCJ1c2VyX2lkIjoiNjQ0Y2ZkNjNhM2U5OGFhMjU3MjFmNjkwIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODI4MDY1Nzh9.VGhcSKxQK_wYzM-uYsQXFwlzvF-gHuKq0hr5fauDa7U",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg0NDczNX0.9J4kZert_t8zki7ajnDwa2yi0gXKOPbv_oozUhzUUhQ",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"creator_id\": \"644bd0fbeaa41c31f21b5323\",\n    \"donate\": 50,\n    \"currency_type\": \"USD\"\n}",
+							"raw": "{\n    \"creator_id\": \"644cfd63a3e98aa25721f690\",\n    \"donate\": 2,\n    \"currency_type\": \"USD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -615,7 +615,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporter/",
+							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/count",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -626,8 +626,165 @@
 								"v1",
 								"creator",
 								"644bd0fbeaa41c31f21b5323",
+								"supporters",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lock & Unlock content",
+			"item": [
+				{
+					"name": "get content for specific supporter by content id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg0NDczNX0.9J4kZert_t8zki7ajnDwa2yi0gXKOPbv_oozUhzUUhQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/content/644e10e2030fb5e593c36ade/supporter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"content",
+								"644e10e2030fb5e593c36ade",
+								"supporter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all contents for specific supporter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg0NDczNX0.9J4kZert_t8zki7ajnDwa2yi0gXKOPbv_oozUhzUUhQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/content/all/supporter/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"content",
+								"all",
 								"supporter",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Contents for specific supporter by creator id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg0NDczNX0.9J4kZert_t8zki7ajnDwa2yi0gXKOPbv_oozUhzUUhQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/644cfd63a3e98aa25721f690/supporter/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"644cfd63a3e98aa25721f690",
+								"supporter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Contents for specific supporter by category name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg1MzUyMn0.6ec0A-Sw5ma3vfAtwQcuYaRRbuel5k6oq5wLbnZ9Pao",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/content/category/gaming/supporter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"content",
+								"category",
+								"gaming",
+								"supporter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator Supporters Records",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZmR3ZSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQxNWQwNzQ0M2I1MjM1N2NkMjliOTIiLCJleHAiOjE2ODIwMTI0NjB9.5yOL3T2vR6fEUaNRQA5Ma_mILR02T-AijR5ikuanNK8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/record",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"644bd0fbeaa41c31f21b5323",
+								"supporters",
+								"record"
 							]
 						}
 					},
