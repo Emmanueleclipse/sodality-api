@@ -76,6 +76,9 @@ var GetAllCreatorsContent = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 		collection := client.Database("sodality").Collection("users")
 		collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "_id", Value: userID}}).Decode(&user)
 		user.Password = ""
+		user.OTPEnabled = false
+		user.OTPSecret = ""
+		user.OTPAuthURL = ""
 		v.User = user
 	}
 	middlewares.SuccessArrRespond(allContent, rw)

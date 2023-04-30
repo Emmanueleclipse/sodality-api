@@ -114,6 +114,9 @@ var GetAllCreatorsContentForSpecificSupporter = http.HandlerFunc(func(rw http.Re
 		collection := client.Database("sodality").Collection("users")
 		collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "_id", Value: userID}}).Decode(&user)
 		user.Password = ""
+		user.OTPEnabled = false
+		user.OTPSecret = ""
+		user.OTPAuthURL = ""
 		v.User = user
 	}
 
@@ -358,6 +361,9 @@ var GetCreatorSupportersRecord = http.HandlerFunc(func(rw http.ResponseWriter, r
 		collection := client.Database("sodality").Collection("users")
 		collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "_id", Value: userID}}).Decode(&user)
 		user.Password = ""
+		user.OTPEnabled = false
+		user.OTPSecret = ""
+		user.OTPAuthURL = ""
 		v.User = user
 	}
 

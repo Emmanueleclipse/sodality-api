@@ -62,5 +62,11 @@ func Routes() *mux.Router {
 	donate.HandleFunc("/", middlewares.IsAuthorized(controllers.DonateUser)).Methods("POST")
 	donate.HandleFunc("/content", middlewares.IsAuthorized(controllers.DonateContent)).Methods("POST")
 
+	// 2FA endpoint
+	security := api.PathPrefix("/auth").Subrouter()
+	security.HandleFunc("/generate", middlewares.IsAuthorized(controllers.GenerateQR)).Methods("POST")
+	security.HandleFunc("/verify", middlewares.IsAuthorized(controllers.VerifyOTP)).Methods("POST")
+	security.HandleFunc("/2fa/update", middlewares.IsAuthorized(controllers.Update2FA)).Methods("PUT")
+
 	return router
 }

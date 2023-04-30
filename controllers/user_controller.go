@@ -55,6 +55,7 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		return
 	}
 	user.Password = passwordHash
+	user.OTPEnabled = false
 	result, err := collection.InsertOne(r.Context(), user)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
@@ -114,6 +115,9 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 		return
 	}
 	user.Password = ""
+	user.OTPEnabled = false
+	user.OTPSecret = ""
+	user.OTPAuthURL = ""
 	middlewares.SuccessArrRespond(user, rw)
 })
 
@@ -134,6 +138,8 @@ var GetProfile = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 		return
 	}
 	user.Password = ""
+	user.OTPSecret = ""
+	user.OTPAuthURL = ""
 
 	middlewares.SuccessArrRespond(user, rw)
 })

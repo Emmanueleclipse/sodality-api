@@ -22,6 +22,10 @@ type User struct {
 	Title          string  `json:"title,omitempty" bson:"title,omitempty"`
 	SubTitle       string  `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
 	TotalDonations float64 `json:"total_donations,omitempty" bson:"total_donations,omitempty"`
+	OTPAuthURL     string  `json:"otp_auth_url,omitempty" bson:"otp_auth_url,omitempty"`
+	OTPSecret      string  `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
+	OTPEnabled     bool    `json:"otp_enabled,omitempty" bson:"otp_enabled"`
+	Token          string  `json:"token,omitempty" bson:"token,omitempty"`
 	Description    string  `json:"description,omitempty" bson:"description,omitempty"`
 	Facebook       string  `json:"facebook,omitempty" bson:"facebook,omitempty"`
 	Twitter        string  `json:"twitter,omitempty" bson:"twitter,omitempty"`
@@ -116,4 +120,8 @@ type DonateResp struct {
 	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
 	ExpiredAt    time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
+}
+
+type GenerateAuthURL struct {
+	URL string `json:"otpauth_url,omitempty" bson:"otpauth_url,omitempty"`
 }

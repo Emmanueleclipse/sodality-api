@@ -8,6 +8,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/ipfs/go-ipfs-api v0.6.0
 	github.com/joho/godotenv v1.5.1
+	github.com/pquerna/otp v1.4.0
 	github.com/rs/cors v1.9.0
 	go.mongodb.org/mongo-driver v1.11.4
 	golang.org/x/crypto v0.6.0
@@ -16,6 +17,7 @@ require (
 
 require (
 	github.com/benbjohnson/clock v1.3.0 // indirect
+	github.com/boombuler/barcode v1.0.1-0.20190219062509-6c824513bacc // indirect
 	github.com/crackcomm/go-gitignore v0.0.0-20170627025303-887ab5e44cc3 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
