@@ -40,7 +40,10 @@ var GenerateQR = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
-	middlewares.SuccessRespond(key.URL(), rw)
+	var resp models.GenerateAuthURL
+	resp.OTPSecret = key.Secret()
+	resp.URL = key.URL()
+	middlewares.SuccessRespond(resp, rw)
 })
 
 var VerifyOTP = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {

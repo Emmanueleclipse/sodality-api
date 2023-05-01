@@ -69,3 +69,21 @@ var NotificationSetting = http.HandlerFunc(func(rw http.ResponseWriter, r *http.
 	}
 	middlewares.SuccessResponse("notification setting updated successfully", rw)
 })
+
+var GetNotificationSetting = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	props, _ := r.Context().Value("props").(jwt.MapClaims)
+	var resp models.NotificationSetting
+
+	collection := client.Database("sodality").Collection("notificationSetting")
+	err := collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: props["user_id"].(string)}}).Decode(&resp)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.SuccessArrRespond("notification setting does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
+	middlewares.SuccessArrRespond(resp, rw)
+})

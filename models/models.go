@@ -135,5 +135,6 @@ type DonateResp struct {
 }
 
 type GenerateAuthURL struct {
-	URL string `json:"otpauth_url,omitempty" bson:"otpauth_url,omitempty"`
+	OTPSecret string `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
+	URL       string `json:"otpauth_url,omitempty" bson:"otpauth_url,omitempty"`
 }
