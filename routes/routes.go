@@ -44,6 +44,7 @@ func Routes() *mux.Router {
 	// setting endpoint
 	setting := creator.PathPrefix("/setting").Subrouter()
 	setting.HandleFunc("/update", middlewares.IsAuthorized(controllers.CreatorSetting)).Methods("PUT")
+	setting.HandleFunc("/notification", middlewares.IsAuthorized(controllers.NotificationSetting)).Methods("PUT")
 
 	// followers endpoint
 	creator.HandleFunc("/follow/{creator_id}", middlewares.IsAuthorized(controllers.FollowCreator)).Methods("POST")

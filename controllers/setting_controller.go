@@ -9,6 +9,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 var CreatorSetting = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
@@ -20,7 +21,11 @@ var CreatorSetting = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reque
 	collection := client.Database("sodality").Collection("users")
 	err := collection.FindOne(r.Context(), bson.D{primitive.E{Key: "_id", Value: userID}}).Decode(&user)
 	if err != nil {
-		middlewares.AuthorizationResponse("malformed token", rw)
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("creator setting does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
 

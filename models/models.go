@@ -10,8 +10,8 @@ import (
 type User struct {
 	ID       primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	Username string             `json:"username,omitempty" bson:"username,omitempty"`
-	Email    string             `json:"email,omitempty" bson:"email,omitempty"`
-	Password string             `json:"password,omitempty" bson:"password,omitempty"`
+	// Email    string             `json:"email,omitempty" bson:"email,omitempty"`
+	Password string `json:"password,omitempty" bson:"password,omitempty"`
 	// SubscriberCount int64              `json:"subscriber_count,omitempty" bson:"subscriber_count,omitempty"`
 	Role           string  `json:"role,omitempty" bson:"role,omitempty"`
 	Mnemonic       string  `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
@@ -31,6 +31,18 @@ type User struct {
 	Twitter        string  `json:"twitter,omitempty" bson:"twitter,omitempty"`
 	Youtube        string  `json:"youtube,omitempty" bson:"youtube,omitempty"`
 	Odysee         string  `json:"odysee,omitempty" bson:"odysee,omitempty"`
+}
+
+type NotificationSetting struct {
+	ID                     primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	UserID                 string             `json:"user_id,omitempty" bson:"user_id"`
+	Email                  string             `json:"email,omitempty" bson:"email,omitempty"`
+	NewSupporterAlerts     bool               `json:"new_supporters_alerts" bson:"new_supporters_alerts"`
+	WeeklyTips             bool               `json:"weekly_tips" bson:"weekly_tips"`
+	WeeklySupporterSummary bool               `json:"weekly_supporter_summary" bson:"weekly_supporter_summary"`
+	NewCryptoSupport       bool               `json:"new_crypto_support" bson:"new_crypto_support"`
+	CreatedAt              time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt              time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 type Followers struct {

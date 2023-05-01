@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd0123\", \n  \"role\": \"supporter\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdffdwe\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd012345\", \n  \"role\": \"supporter\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdhffdwe\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +24,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/register",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/user/register",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -47,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd01234\",\n  \"password\": \"abcd@01234\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd012345\",\n  \"password\": \"abcd@01234\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,12 +53,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/login",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/user/login",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -77,12 +73,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/644bd0fbeaa41c31f21b5323",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/user/644bd0fbeaa41c31f21b5323",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -106,7 +100,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\" : \"abcd01234\",\n  \"email\" : \"email@gmail.com\",\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme muc\"\n}\n",
+							"raw": "{\n  \"username\" : \"abcd01234\",\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme muc\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -114,12 +108,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/update",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/user/update",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -142,12 +134,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/user/profile/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/user/profile/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -177,7 +167,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"ipfs_url\":\"enter ipfs url\",\n  \"type\" : \"mp4\",\n  \"content_type\":\"supporter\",\n  \"currency_type\":\"USD\"\n}\n",
+							"raw": "{\n  \"title\" : \"hyyyy\",\n  \"body\" : \"this is for testing\",\n  \"category_name\": \"gaming\",\n  \"ipfs_url\":\"enter ipfs url\",\n  \"type\" : \"mp4\",\n  \"content_type\":\"Supporter\",\n  \"currency_type\":\"USD\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -185,12 +175,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/content/post",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/content/post",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -207,12 +195,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/6441567d624ede29ea22ef65",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/content/6441567d624ede29ea22ef65",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -236,12 +222,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/content/delete/6442d395f904ba39dd95f48e",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/content/delete/6442d395f904ba39dd95f48e",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -259,12 +243,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/content/h",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/content/h",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -287,12 +269,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/all/content",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/all/content",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -310,12 +290,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/category/gaming/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/content/category/gaming/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -335,12 +313,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/content/all",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/content/all",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -368,12 +344,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/follow/6441564e624ede29ea22ef64",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/follow/6441564e624ede29ea22ef64",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -397,12 +371,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/6441564e624ede29ea22ef64/followers/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/6441564e624ede29ea22ef64/followers/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -427,12 +399,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/unfollow/6440aeda71cb58306d4e7e30",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/unfollow/6440aeda71cb58306d4e7e30",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -470,18 +440,52 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/setting/update",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/setting/update",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
 								"creator",
 								"setting",
 								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notification Setting",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4MzAxODM3M30.lkNbqrcHVodbVl2-MEp-vonu7J6j6Tz6AaGNflJOPUk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\" : \"abcd01234@gmail.com\",\n  \"new_supporters_alerts\" : false,\n  \"weekly_tips\" : true,\n  \"weekly_supporter_summary\" : true,\n  \"new_crypto_support\" : true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/creator/setting/notification",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"setting",
+								"notification"
 							]
 						}
 					},
@@ -508,12 +512,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/file/upload",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/file/upload",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -550,12 +552,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/donate/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/donate/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -587,12 +587,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/donate/content",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/donate/content",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -615,12 +613,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/count",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/count",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -650,12 +646,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/644e10e2030fb5e593c36ade/supporter",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/content/644e10e2030fb5e593c36ade/supporter",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -680,12 +674,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/all/supporter/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/content/all/supporter/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -711,12 +703,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/644cfd63a3e98aa25721f690/supporter/",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/644cfd63a3e98aa25721f690/supporter/",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -741,12 +731,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/content/category/gaming/supporter",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/content/category/gaming/supporter",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -772,12 +760,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/record",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/record",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -807,12 +793,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/generate",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/auth/generate",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -844,12 +828,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/verify",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/auth/verify",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -881,12 +863,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/auth/2fa/update",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/auth/2fa/update",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
