@@ -1,23 +1,26 @@
 package controllers
 
 import (
-	"bytes"
+	"context"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
 	middlewares "sodality/handlers"
+	"sodality/ipfs"
 	"sodality/models"
 
-	shell "github.com/ipfs/go-ipfs-api"
+	iface "github.com/ipfs/interface-go-ipfs-core"
 )
 
-// Paste here the local path of your computer where the file will be downloaded
-const YourLocalPath = "./"
+var Session iface.CoreAPI
 
-// Paste here your public key
-const YourPublicKey = "publickey"
+func init() {
+	Session = ipfs.StartingIPFS(context.Background())
+	ipfs.ConnectPeers(context.Background(), Session)
+}
 
 var UploadFile = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+
 	file, header, err := r.FormFile("file")
 	if err != nil {
 		middlewares.ErrorResponse("error uploading file:"+err.Error(), rw)
@@ -25,35 +28,23 @@ var UploadFile = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	}
 	defer file.Close()
 
-	src, err := header.Open()
+	data, err := ioutil.ReadAll(file)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
 
-	defer src.Close()
-	data, err := io.ReadAll(file)
+	path, err := ipfs.AddFilePath(data, r.Context(), Session)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
-		return
-	}
-
-	sh := shell.NewShell("localhost:5001")
-	cid, err := addFile(sh, data)
-	if err != nil {
 		return
 	}
 
 	var resp models.FileResp
 
-	resp.FileHash = cid
+	resp.IpfsURL = fmt.Sprintf("https://ipfs.io/ipfs/%v", path.Cid())
 	resp.Filename = header.Filename
 	resp.FileSize = header.Size
-	resp.IpfsURL = fmt.Sprintf("https://ipfs.io/ipfs/%v", cid)
 
 	middlewares.SuccessRespond(resp, rw)
 })
-
-func addFile(sh *shell.Shell, data []byte) (string, error) {
-	return sh.Add(bytes.NewReader(data))
-}
