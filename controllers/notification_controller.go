@@ -78,7 +78,7 @@ var GetNotificationSetting = http.HandlerFunc(func(rw http.ResponseWriter, r *ht
 	err := collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: props["user_id"].(string)}}).Decode(&resp)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			middlewares.SuccessArrRespond("notification setting does not exist", rw)
+			middlewares.SuccessArrRespond(nil, rw)
 			return
 		}
 		middlewares.ServerErrResponse(err.Error(), rw)
