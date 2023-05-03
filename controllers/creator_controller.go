@@ -138,3 +138,34 @@ var GetAllCreators = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reque
 	}
 	middlewares.SuccessArrRespond(allCreators, rw)
 })
+
+var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var allCreator []*models.GetAllCreatorsResp
+
+	filter := bson.M{"username": bson.M{"$regex": params["search"], "$options": "im"}}
+
+	collection := client.Database("sodality").Collection("users")
+	cursor, err := collection.Find(context.TODO(), filter)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("contents does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
+	for cursor.Next(context.TODO()) {
+		var creator models.GetAllCreatorsResp
+		err := cursor.Decode(&creator)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+
+		allCreator = append(allCreator, &creator)
+	}
+
+	middlewares.SuccessArrRespond(allCreator, rw)
+})

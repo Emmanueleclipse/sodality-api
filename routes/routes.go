@@ -34,6 +34,7 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/content/category/{category_name}/", controllers.GetCreatorDirectoryByDirectoryName).Methods("GET")
 	creator.HandleFunc("/all/content", middlewares.IsAuthorized(controllers.GetOwnContent)).Methods("GET")
 	creator.HandleFunc("/all", controllers.GetAllCreators).Methods("GET")
+	creator.HandleFunc("/{search}", controllers.SearchCreatorByUsername).Methods("GET")
 
 	// supporter get creator content
 	creator.HandleFunc("/content/{id}/supporter", middlewares.IsAuthorized(controllers.GetContentForSpecificSupporterByID)).Methods("GET")
