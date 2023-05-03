@@ -33,6 +33,26 @@ type User struct {
 	Odysee         string  `json:"odysee,omitempty" bson:"odysee,omitempty"`
 }
 
+type GetAllCreatorsResp struct {
+	ID             primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username       string             `json:"username,omitempty" bson:"username,omitempty"`
+	Role           string             `json:"role,omitempty" bson:"role,omitempty"`
+	Mnemonic       string             `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
+	Bio            string             `json:"bio,omitempty" bson:"bio,omitempty"`
+	Avatar         string             `json:"avatar,omitempty" bson:"avatar,omitempty"`
+	Dash           string             `json:"dash,omitempty" bson:"dash,omitempty"`
+	HeaderImage    string             `json:"header_image,omitempty" bson:"header_image,omitempty"`
+	Title          string             `json:"title,omitempty" bson:"title,omitempty"`
+	SubTitle       string             `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
+	TotalDonations float64            `json:"total_donations,omitempty" bson:"total_donations,omitempty"`
+	Supporters     int64              `json:"supporters,omitempty" bson:"supporters,omitempty"`
+	Description    string             `json:"description,omitempty" bson:"description,omitempty"`
+	Facebook       string             `json:"facebook,omitempty" bson:"facebook,omitempty"`
+	Twitter        string             `json:"twitter,omitempty" bson:"twitter,omitempty"`
+	Youtube        string             `json:"youtube,omitempty" bson:"youtube,omitempty"`
+	Odysee         string             `json:"odysee,omitempty" bson:"odysee,omitempty"`
+}
+
 type NotificationSetting struct {
 	ID                     primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	UserID                 string             `json:"user_id,omitempty" bson:"user_id"`

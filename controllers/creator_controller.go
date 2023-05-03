@@ -5,6 +5,7 @@ import (
 	"net/http"
 	middlewares "sodality/handlers"
 	"sodality/models"
+	"time"
 
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
@@ -82,4 +83,58 @@ var GetAllCreatorsContent = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 		v.User = user
 	}
 	middlewares.SuccessArrRespond(allContent, rw)
+})
+
+var GetAllCreators = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	var allCreators []*models.GetAllCreatorsResp
+	// opts := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})
+	opts := options.Find().SetSort(bson.D{primitive.E{Key: "total_donations", Value: -1}})
+
+	collection := client.Database("sodality").Collection("users")
+	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "role", Value: "creator"}}, opts)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.SuccessArrRespond(nil, rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	for cursor.Next(context.TODO()) {
+		var creator models.GetAllCreatorsResp
+		err := cursor.Decode(&creator)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+
+		pipeline := bson.A{
+			bson.M{"$match": bson.M{"creator_id": creator.ID.Hex(), "expired_at": bson.M{"$gte": time.Now().UTC()}}},
+			bson.M{"$group": bson.M{"_id": "$user_id", "count": bson.M{"$sum": 1}}},
+		}
+
+		var supporterCount []bson.M
+		collection := client.Database("sodality").Collection("donations")
+		cur, err := collection.Aggregate(context.TODO(), pipeline)
+		if err != nil && err != mongo.ErrNoDocuments {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+		defer cur.Close(context.Background())
+
+		for cur.Next(context.Background()) {
+			var result bson.M
+			err := cur.Decode(&result)
+			if err != nil {
+				middlewares.ServerErrResponse(err.Error(), rw)
+				return
+			}
+			supporterCount = append(supporterCount, result)
+		}
+
+		creator.Supporters = int64(len(supporterCount))
+
+		allCreators = append(allCreators, &creator)
+	}
+	middlewares.SuccessArrRespond(allCreators, rw)
 })
