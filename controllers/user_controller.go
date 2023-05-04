@@ -173,6 +173,9 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	// if newUser.SubscriberCount <= 0 {
 	// 	newUser.SubscriberCount = user.SubscriberCount
 	// }
+	if len(newUser.HeaderImage) <= 0 {
+		newUser.HeaderImage = user.HeaderImage
+	}
 	if len(newUser.Avatar) <= 0 {
 		newUser.Avatar = user.Avatar
 	}
@@ -185,6 +188,15 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	if len(newUser.Role) <= 0 {
 		newUser.Role = user.Role
 	}
+	if len(newUser.Description) <= 0 {
+		newUser.Description = user.Description
+	}
+	if len(newUser.Title) <= 0 {
+		newUser.Title = user.Title
+	}
+	if len(newUser.SubTitle) <= 0 {
+		newUser.SubTitle = user.SubTitle
+	}
 
 	res, err := collection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "_id", Value: user.ID}}, bson.D{
 		primitive.E{
@@ -192,7 +204,10 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 			Value: bson.D{
 				primitive.E{Key: "username", Value: newUser.Username},
 				// primitive.E{Key: "email", Value: newUser.Email},
-				// primitive.E{Key: "subscriber_count", Value: newUser.SubscriberCount},
+				primitive.E{Key: "header_image", Value: newUser.HeaderImage},
+				primitive.E{Key: "title", Value: newUser.Title},
+				primitive.E{Key: "subtitle", Value: newUser.SubTitle},
+				primitive.E{Key: "description", Value: newUser.Description},
 				primitive.E{Key: "avatar", Value: newUser.Avatar},
 				primitive.E{Key: "dash", Value: newUser.Dash},
 				primitive.E{Key: "bio", Value: newUser.Bio},

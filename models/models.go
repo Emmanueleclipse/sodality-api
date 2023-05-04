@@ -34,23 +34,23 @@ type User struct {
 }
 
 type GetAllCreatorsResp struct {
-	ID             primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Username       string             `json:"username,omitempty" bson:"username,omitempty"`
-	Role           string             `json:"role,omitempty" bson:"role,omitempty"`
-	Mnemonic       string             `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
-	Bio            string             `json:"bio,omitempty" bson:"bio,omitempty"`
-	Avatar         string             `json:"avatar,omitempty" bson:"avatar,omitempty"`
-	Dash           string             `json:"dash,omitempty" bson:"dash,omitempty"`
-	HeaderImage    string             `json:"header_image,omitempty" bson:"header_image,omitempty"`
-	Title          string             `json:"title,omitempty" bson:"title,omitempty"`
-	SubTitle       string             `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
-	TotalDonations float64            `json:"total_donations,omitempty" bson:"total_donations,omitempty"`
-	Supporters     int64              `json:"supporters,omitempty" bson:"supporters,omitempty"`
-	Description    string             `json:"description,omitempty" bson:"description,omitempty"`
-	Facebook       string             `json:"facebook,omitempty" bson:"facebook,omitempty"`
-	Twitter        string             `json:"twitter,omitempty" bson:"twitter,omitempty"`
-	Youtube        string             `json:"youtube,omitempty" bson:"youtube,omitempty"`
-	Odysee         string             `json:"odysee,omitempty" bson:"odysee,omitempty"`
+	ID             primitive.ObjectID `json:"_id" bson:"_id,omitempty"`
+	Username       string             `json:"username" bson:"username,omitempty"`
+	Role           string             `json:"role" bson:"role,omitempty"`
+	Mnemonic       string             `json:"mnemonic" bson:"mnemonic,omitempty"`
+	Bio            string             `json:"bio" bson:"bio,omitempty"`
+	Avatar         string             `json:"avatar" bson:"avatar,omitempty"`
+	Dash           string             `json:"dash" bson:"dash,omitempty"`
+	HeaderImage    string             `json:"header_image" bson:"header_image,omitempty"`
+	Title          string             `json:"title" bson:"title,omitempty"`
+	SubTitle       string             `json:"subtitle" bson:"subtitle,omitempty"`
+	TotalDonations float64            `json:"total_donations" bson:"total_donations,omitempty"`
+	Supporters     int64              `json:"supporters" bson:"supporters,omitempty"`
+	Description    string             `json:"description" bson:"description,omitempty"`
+	Facebook       string             `json:"facebook" bson:"facebook,omitempty"`
+	Twitter        string             `json:"twitter" bson:"twitter,omitempty"`
+	Youtube        string             `json:"youtube" bson:"youtube,omitempty"`
+	Odysee         string             `json:"odysee" bson:"odysee,omitempty"`
 }
 
 type NotificationSetting struct {
@@ -84,10 +84,10 @@ type Content struct {
 	Type         string             `json:"type,omitempty" bson:"type,omitempty"`
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
-	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
-	Locked       bool               `json:"locked" bson:"locked"`
-	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt    time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	// CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	Locked    bool      `json:"locked" bson:"locked"`
+	CreatedAt time.Time `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 type GetAllContentWithCreatorResp struct {

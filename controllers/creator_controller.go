@@ -164,6 +164,32 @@ var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *h
 			return
 		}
 
+		pipeline := bson.A{
+			bson.M{"$match": bson.M{"creator_id": creator.ID.Hex(), "expired_at": bson.M{"$gte": time.Now().UTC()}}},
+			bson.M{"$group": bson.M{"_id": "$user_id", "count": bson.M{"$sum": 1}}},
+		}
+
+		var supporterCount []bson.M
+		collection := client.Database("sodality").Collection("donations")
+		cur, err := collection.Aggregate(context.TODO(), pipeline)
+		if err != nil && err != mongo.ErrNoDocuments {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+		defer cur.Close(context.Background())
+
+		for cur.Next(context.Background()) {
+			var result bson.M
+			err := cur.Decode(&result)
+			if err != nil {
+				middlewares.ServerErrResponse(err.Error(), rw)
+				return
+			}
+			supporterCount = append(supporterCount, result)
+		}
+
+		creator.Supporters = int64(len(supporterCount))
+
 		allCreator = append(allCreator, &creator)
 	}
 
