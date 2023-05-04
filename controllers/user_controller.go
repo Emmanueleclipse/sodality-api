@@ -203,7 +203,7 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 			Key: "$set",
 			Value: bson.D{
 				primitive.E{Key: "username", Value: newUser.Username},
-				// primitive.E{Key: "email", Value: newUser.Email},
+				primitive.E{Key: "categories", Value: newUser.Categories},
 				primitive.E{Key: "header_image", Value: newUser.HeaderImage},
 				primitive.E{Key: "title", Value: newUser.Title},
 				primitive.E{Key: "subtitle", Value: newUser.SubTitle},
