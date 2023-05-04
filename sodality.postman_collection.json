@@ -148,6 +148,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get All Creators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/creator/all",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Creators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/creator/abc13",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"abc13"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -498,7 +538,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4MzAxODM3M30.lkNbqrcHVodbVl2-MEp-vonu7J6j6Tz6AaGNflJOPUk",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIiLCJkYXNoIjoiZGZhc2RmMzJ3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ1MGJmNmEyYzAyZTk1NWEwMDQwNzVlIiwicm9sZSI6ImNyZWF0b3IiLCJleHAiOjE2ODMwOTk4OTB9.bUMEANmEu6wvqWkmluqLwRtu_vON3hBV_Hw4iEwedD0",
 								"type": "text"
 							}
 						],
@@ -535,15 +575,20 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/home/mubashir/Videos/authenticator.mp4"
+									"src": "/home/mubashir/Pictures/Screenshots/Screenshot from 2023-05-04 10-23-58.png"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseURL}}/api/v1/file/upload",
+							"raw": "http://18.117.99.208:3000/api/v1/file/upload",
+							"protocol": "http",
 							"host": [
-								"{{baseURL}}"
+								"18",
+								"117",
+								"99",
+								"208"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"v1",
