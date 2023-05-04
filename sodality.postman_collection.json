@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd012345\", \n  \"role\": \"supporter\",\n  \"password\": \"abcd@01234\",\n  \"dash\": \"dfasdf32swswrfafdhffdwe\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd13\", \n  \"role\": \"creator\",\n  \"categories\":[\n      \"Gaming Creators\",\n      \"Writers & Journalists\"\n  ],\n  \"password\": \"abc@01234\",\n  \"dash\": \"dfasdf32swswrfayufdhffdwe\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"abcd012345\",\n  \"password\": \"abcd@01234\"\n}\n",
+							"raw": "{\n  \"username\": \"abcd13\",\n  \"password\": \"abc@01234\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,7 +100,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\" : \"abcd01234\",\n  \"dash\" : \"63efc15d2edf89dd5f49c0a3\",\n  \"bio\" : \"My naeme muc\"\n}\n",
+							"raw": "{\n    \"username\": \"abcd01234\",\n    \"dash\": \"63efc15d2edf89dd5f49c0a3\",\n    \"bio\": \"My naeme muc\",\n    \"header_image\": \" pic\",\n    \"title\": \"title\",\n    \"subtitle\": \"subtitle\",\n    \"description\": \"description\",\n    \"avatar\": \"avatar\",\n    \"role\": \"dash\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -129,7 +129,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNCIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmFmZGZmZHdlIiwidXNlcl9pZCI6IjY0NGJkMGZiZWFhNDFjMzFmMjFiNTMyMyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgyNjk3NTEyfQ.XwWh5_cMie8aMaKAoHCuhAqJ0-SVz5lqCQi24Nqe7Xc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMyIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTM4YzMzYmNhYjc5MzljNmRlODJkNyIsInJvbGUiOiJzdXBwb3J0ZXIiLCJleHAiOjE2ODMyODMzOTJ9.wjuu7jjPJATF5xhrAiMY6Sm7JgYe0_GeFpwiL0BCV3s",
 								"type": "text"
 							}
 						],
@@ -175,7 +175,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/abc13",
+							"raw": "{{baseURL}}/api/v1/creator/abc",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -183,7 +183,7 @@
 								"api",
 								"v1",
 								"creator",
-								"abc13"
+								"abc"
 							]
 						}
 					},

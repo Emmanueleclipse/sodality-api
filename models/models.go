@@ -13,24 +13,25 @@ type User struct {
 	// Email    string             `json:"email,omitempty" bson:"email,omitempty"`
 	Password string `json:"password,omitempty" bson:"password,omitempty"`
 	// SubscriberCount int64              `json:"subscriber_count,omitempty" bson:"subscriber_count,omitempty"`
-	Role           string  `json:"role,omitempty" bson:"role,omitempty"`
-	Mnemonic       string  `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
-	Bio            string  `json:"bio,omitempty" bson:"bio,omitempty"`
-	Avatar         string  `json:"avatar,omitempty" bson:"avatar,omitempty"`
-	Dash           string  `json:"dash,omitempty" bson:"dash,omitempty"`
-	HeaderImage    string  `json:"header_image,omitempty" bson:"header_image,omitempty"`
-	Title          string  `json:"title,omitempty" bson:"title,omitempty"`
-	SubTitle       string  `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
-	TotalDonations float64 `json:"total_donations,omitempty" bson:"total_donations,omitempty"`
-	OTPAuthURL     string  `json:"otp_auth_url,omitempty" bson:"otp_auth_url,omitempty"`
-	OTPSecret      string  `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
-	OTPEnabled     bool    `json:"otp_enabled,omitempty" bson:"otp_enabled"`
-	Token          string  `json:"token,omitempty" bson:"token,omitempty"`
-	Description    string  `json:"description,omitempty" bson:"description,omitempty"`
-	Facebook       string  `json:"facebook,omitempty" bson:"facebook,omitempty"`
-	Twitter        string  `json:"twitter,omitempty" bson:"twitter,omitempty"`
-	Youtube        string  `json:"youtube,omitempty" bson:"youtube,omitempty"`
-	Odysee         string  `json:"odysee,omitempty" bson:"odysee,omitempty"`
+	Role           string   `json:"role,omitempty" bson:"role,omitempty"`
+	Mnemonic       string   `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
+	Bio            string   `json:"bio,omitempty" bson:"bio,omitempty"`
+	Avatar         string   `json:"avatar,omitempty" bson:"avatar,omitempty"`
+	Dash           string   `json:"dash,omitempty" bson:"dash,omitempty"`
+	Categories     []string `json:"categories,omitempty" bson:"categories,omitempty"`
+	HeaderImage    string   `json:"header_image,omitempty" bson:"header_image,omitempty"`
+	Title          string   `json:"title,omitempty" bson:"title,omitempty"`
+	SubTitle       string   `json:"subtitle,omitempty" bson:"subtitle,omitempty"`
+	TotalDonations float64  `json:"total_donations,omitempty" bson:"total_donations,omitempty"`
+	OTPAuthURL     string   `json:"otp_auth_url,omitempty" bson:"otp_auth_url,omitempty"`
+	OTPSecret      string   `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
+	OTPEnabled     bool     `json:"otp_enabled,omitempty" bson:"otp_enabled"`
+	Token          string   `json:"token,omitempty" bson:"token,omitempty"`
+	Description    string   `json:"description,omitempty" bson:"description,omitempty"`
+	Facebook       string   `json:"facebook,omitempty" bson:"facebook,omitempty"`
+	Twitter        string   `json:"twitter,omitempty" bson:"twitter,omitempty"`
+	Youtube        string   `json:"youtube,omitempty" bson:"youtube,omitempty"`
+	Odysee         string   `json:"odysee,omitempty" bson:"odysee,omitempty"`
 }
 
 type GetAllCreatorsResp struct {
@@ -44,6 +45,7 @@ type GetAllCreatorsResp struct {
 	HeaderImage    string             `json:"header_image" bson:"header_image,omitempty"`
 	Title          string             `json:"title" bson:"title,omitempty"`
 	SubTitle       string             `json:"subtitle" bson:"subtitle,omitempty"`
+	Categories     []string           `json:"categories" bson:"categories,omitempty"`
 	TotalDonations float64            `json:"total_donations" bson:"total_donations,omitempty"`
 	Supporters     int64              `json:"supporters" bson:"supporters,omitempty"`
 	Description    string             `json:"description" bson:"description,omitempty"`
