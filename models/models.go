@@ -86,6 +86,7 @@ type Content struct {
 	Type         string             `json:"type,omitempty" bson:"type,omitempty"`
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
+	Public       bool               `json:"public,omitempty" bson:"public,omitempty"`
 	// CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	Locked    bool      `json:"locked" bson:"locked"`
 	CreatedAt time.Time `json:"created_at,omitempty" bson:"created_at,omitempty"`
@@ -103,11 +104,12 @@ type GetAllContentWithCreatorResp struct {
 	Type         string             `json:"type,omitempty" bson:"type,omitempty"`
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
+	Public       bool               `json:"public" bson:"public"`
 	ContentType  string             `json:"content_type,omitempty" bson:"content_type,omitempty"`
 	Locked       bool               `json:"locked" bson:"locked"`
-	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
-	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	UpdatedAt    time.Time          `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
+	// CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	CreatedAt time.Time `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
 type FollowersCount struct {
