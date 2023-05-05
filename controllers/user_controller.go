@@ -100,7 +100,7 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 // GetUserByID -> Get user details with user id
 var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	var user models.GetAllCreatorsResp
+	var user models.GetCreatorProfileResp
 
 	userID, _ := primitive.ObjectIDFromHex(params["id"])
 
