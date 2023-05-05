@@ -143,7 +143,7 @@ var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *h
 	params := mux.Vars(r)
 	var allCreator []*models.GetAllCreatorsResp
 
-	filter := bson.M{"username": bson.M{"$regex": params["search"], "$options": "im"}}
+	filter := bson.M{"username": bson.M{"$regex": "^" + params["search"], "$options": "im"}}
 
 	collection := client.Database("sodality").Collection("users")
 	cursor, err := collection.Find(context.TODO(), filter)
