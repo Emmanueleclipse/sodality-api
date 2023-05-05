@@ -35,24 +35,24 @@ type User struct {
 }
 
 type GetAllCreatorsResp struct {
-	ID             primitive.ObjectID `json:"_id" bson:"_id,omitempty"`
-	Username       string             `json:"username" bson:"username,omitempty"`
-	Role           string             `json:"role" bson:"role,omitempty"`
-	Mnemonic       string             `json:"mnemonic" bson:"mnemonic,omitempty"`
-	Bio            string             `json:"bio" bson:"bio,omitempty"`
-	Avatar         string             `json:"avatar" bson:"avatar,omitempty"`
-	Dash           string             `json:"dash" bson:"dash,omitempty"`
-	HeaderImage    string             `json:"header_image" bson:"header_image,omitempty"`
-	Title          string             `json:"title" bson:"title,omitempty"`
-	SubTitle       string             `json:"subtitle" bson:"subtitle,omitempty"`
-	Categories     []string           `json:"categories" bson:"categories,omitempty"`
-	TotalDonations float64            `json:"total_donations" bson:"total_donations,omitempty"`
-	Supporters     int64              `json:"supporters" bson:"supporters,omitempty"`
-	Description    string             `json:"description" bson:"description,omitempty"`
-	Facebook       string             `json:"facebook" bson:"facebook,omitempty"`
-	Twitter        string             `json:"twitter" bson:"twitter,omitempty"`
-	Youtube        string             `json:"youtube" bson:"youtube,omitempty"`
-	Odysee         string             `json:"odysee" bson:"odysee,omitempty"`
+	ID       primitive.ObjectID `json:"_id" bson:"_id,omitempty"`
+	Username string             `json:"username" bson:"username,omitempty"`
+	Role     string             `json:"role" bson:"role,omitempty"`
+	// Mnemonic       string             `json:"mnemonic" bson:"mnemonic,omitempty"`
+	Bio            string   `json:"bio" bson:"bio,omitempty"`
+	Avatar         string   `json:"avatar" bson:"avatar,omitempty"`
+	Dash           string   `json:"dash" bson:"dash,omitempty"`
+	HeaderImage    string   `json:"header_image" bson:"header_image,omitempty"`
+	Title          string   `json:"title" bson:"title,omitempty"`
+	SubTitle       string   `json:"subtitle" bson:"subtitle,omitempty"`
+	Categories     []string `json:"categories" bson:"categories,omitempty"`
+	TotalDonations float64  `json:"total_donations" bson:"total_donations,omitempty"`
+	Supporters     int64    `json:"supporters" bson:"supporters,omitempty"`
+	Description    string   `json:"description" bson:"description,omitempty"`
+	Facebook       string   `json:"facebook" bson:"facebook,omitempty"`
+	Twitter        string   `json:"twitter" bson:"twitter,omitempty"`
+	Youtube        string   `json:"youtube" bson:"youtube,omitempty"`
+	Odysee         string   `json:"odysee" bson:"odysee,omitempty"`
 }
 
 type NotificationSetting struct {

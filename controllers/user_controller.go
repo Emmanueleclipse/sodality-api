@@ -100,7 +100,7 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 // GetUserByID -> Get user details with user id
 var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	var user models.User
+	var user models.GetAllCreatorsResp
 
 	userID, _ := primitive.ObjectIDFromHex(params["id"])
 
@@ -114,10 +114,10 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
-	user.Password = ""
-	user.OTPEnabled = false
-	user.OTPSecret = ""
-	user.OTPAuthURL = ""
+	// user.Password = ""
+	// user.OTPEnabled = false
+	// user.OTPSecret = ""
+	// user.OTPAuthURL = ""
 	middlewares.SuccessArrRespond(user, rw)
 })
 
