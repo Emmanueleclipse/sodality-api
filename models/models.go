@@ -113,6 +113,22 @@ type Content struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty" bson:"updated_at,omitempty"`
 }
 
+type GetContentResp struct {
+	ID           primitive.ObjectID `json:"_id" bson:"_id,omitempty"`
+	UserID       string             `json:"user_id" bson:"user_id,omitempty"`
+	CategoryName string             `json:"category_name" bson:"category_name,omitempty"`
+	Title        string             `json:"title" bson:"title,omitempty"`
+	Body         string             `json:"body" bson:"body,omitempty"`
+	ContentType  string             `json:"content_type" bson:"content_type,omitempty"`
+	Type         string             `json:"type" bson:"type,omitempty"`
+	IpfsURL      string             `json:"ipfs_url" bson:"ipfs_url,omitempty"`
+	Fund         float64            `json:"fund" bson:"fund,omitempty"`
+	Public       bool               `json:"public" bson:"public,omitempty"`
+	// CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	Locked    bool      `json:"locked" bson:"locked"`
+	CreatedAt time.Time `json:"created_at" bson:"created_at,omitempty"`
+}
+
 type GetAllContentWithCreatorResp struct {
 	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	ContentID    string             `json:"content_id,omitempty" bson:"content_id,omitempty"`

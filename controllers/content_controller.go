@@ -111,6 +111,37 @@ var GetOwnContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reques
 	middlewares.SuccessArrRespond(allContent, rw)
 })
 
+var GetCreatorContentById = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var allContent []*models.GetContentResp
+
+	// opts := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})
+	opts := options.Find().SetSort(bson.D{primitive.E{Key: "fund", Value: -1}})
+
+	collection := client.Database("sodality").Collection("content")
+	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: params["creator_id"]}}, opts)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("content does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	for cursor.Next(context.TODO()) {
+		var content models.GetContentResp
+		err := cursor.Decode(&content)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+
+		allContent = append(allContent, &content)
+	}
+
+	middlewares.SuccessArrRespond(allContent, rw)
+})
+
 var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var allContent []*models.Content
