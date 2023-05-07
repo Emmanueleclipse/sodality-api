@@ -143,7 +143,8 @@ var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *h
 	params := mux.Vars(r)
 	var allCreator []*models.GetAllCreatorsResp
 	if len(params["search"]) < 2 {
-		middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
+		middlewares.SuccessArrRespond(nil, rw)
+		// middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
 		return
 	}
 

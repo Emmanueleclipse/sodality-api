@@ -147,7 +147,8 @@ var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http
 	var allContent []*models.Content
 
 	if len(params["search"]) <= 2 {
-		middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
+		middlewares.SuccessArrRespond(nil, rw)
+		// middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
 		return
 	}
 
