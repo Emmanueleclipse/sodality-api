@@ -146,7 +146,12 @@ var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http
 	params := mux.Vars(r)
 	var allContent []*models.Content
 
-	filter := bson.M{"title": bson.M{"$regex": params["search"], "$options": "im"}}
+	if len(params["search"]) <= 2 {
+		middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
+		return
+	}
+
+	filter := bson.M{"title": bson.M{"$regex": "^" + params["search"], "$options": "im"}}
 
 	collection := client.Database("sodality").Collection("content")
 	cursor, err := collection.Find(context.TODO(), filter)

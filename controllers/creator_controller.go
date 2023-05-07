@@ -142,6 +142,10 @@ var GetAllCreators = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reque
 var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var allCreator []*models.GetAllCreatorsResp
+	if len(params["search"]) < 2 {
+		middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
+		return
+	}
 
 	filter := bson.M{"username": bson.M{"$regex": "^" + params["search"], "$options": "im"}}
 
