@@ -5,6 +5,7 @@ import (
 	"net/http"
 	middlewares "sodality/handlers"
 	"sodality/models"
+	"strconv"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -140,18 +141,34 @@ var GetAllCreators = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Reque
 })
 
 var SearchCreatorByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
+	// params := mux.Vars(r)
+
+	search := r.URL.Query().Get("search")
+	limit := r.URL.Query().Get("limit")
+
 	var allCreator []*models.GetAllCreatorsResp
-	if len(params["search"]) < 2 {
+	if len(search) < 2 {
 		middlewares.SuccessArrRespond(nil, rw)
 		// middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
 		return
 	}
+	var newLimit int64
+	var err error
+	if len(limit) > 0 {
+		newLimit, err = strconv.ParseInt(limit, 10, 64)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
 
-	filter := bson.M{"username": bson.M{"$regex": "^" + params["search"], "$options": "im"}}
+	}
+	opts := options.Find().SetLimit(newLimit)
+
+	filter := bson.M{"username": bson.M{"$regex": "^" + search, "$options": "im"}}
 
 	collection := client.Database("sodality").Collection("users")
-	cursor, err := collection.Find(context.TODO(), filter)
+
+	cursor, err := collection.Find(context.TODO(), filter, opts)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.ErrorResponse("contents does not exist", rw)

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -143,19 +144,33 @@ var GetCreatorContentById = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 })
 
 var SearchContentByTitle = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
+	// params := mux.Vars(r)
 	var allContent []*models.Content
 
-	if len(params["search"]) < 2 {
+	search := r.URL.Query().Get("search")
+	limit := r.URL.Query().Get("limit")
+
+	if len(search) < 2 {
 		middlewares.SuccessArrRespond(nil, rw)
 		// middlewares.ErrorResponse("search required two or more alphabets or numbers", rw)
 		return
 	}
+	var newLimit int64
+	var err error
+	if len(limit) > 0 {
+		newLimit, err = strconv.ParseInt(limit, 10, 64)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
 
-	filter := bson.M{"title": bson.M{"$regex": "^" + params["search"], "$options": "im"}}
+	}
+	opts := options.Find().SetLimit(newLimit)
+
+	filter := bson.M{"title": bson.M{"$regex": "^" + search, "$options": "im"}}
 
 	collection := client.Database("sodality").Collection("content")
-	cursor, err := collection.Find(context.TODO(), filter)
+	cursor, err := collection.Find(context.TODO(), filter, opts)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.ErrorResponse("contents does not exist", rw)

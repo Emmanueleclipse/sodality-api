@@ -25,7 +25,7 @@ func Routes() *mux.Router {
 	content := api.PathPrefix("/content").Subrouter()
 	content.HandleFunc("/post", middlewares.IsAuthorized(controllers.PostContent)).Methods("POST")
 	content.HandleFunc("/all", controllers.GetAllCreatorsContent).Methods("GET")
-	content.HandleFunc("/{search}", controllers.SearchContentByTitle).Methods("GET")
+	content.HandleFunc("/search", controllers.SearchContentByTitle).Methods("GET")
 	content.HandleFunc("/delete/{id}", middlewares.IsAuthorized(controllers.DeleteContent)).Methods("DELETE")
 
 	// Creator content
@@ -34,7 +34,7 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/content/category/{category_name}/", controllers.GetCreatorDirectoryByDirectoryName).Methods("GET")
 	creator.HandleFunc("/all/content", middlewares.IsAuthorized(controllers.GetOwnContent)).Methods("GET")
 	creator.HandleFunc("/all", controllers.GetAllCreators).Methods("GET")
-	creator.HandleFunc("/{search}", controllers.SearchCreatorByUsername).Methods("GET")
+	creator.HandleFunc("/search", controllers.SearchCreatorByUsername).Methods("GET")
 	creator.HandleFunc("/all/content/{creator_id}", controllers.GetCreatorContentById).Methods("GET")
 
 	// supporter get creator content

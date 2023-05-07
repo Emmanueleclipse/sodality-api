@@ -197,7 +197,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/abc",
+							"raw": "{{baseURL}}/api/v1/creator/search?search=abc&limit=5",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -205,7 +205,17 @@
 								"api",
 								"v1",
 								"creator",
-								"abc"
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "abc"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -305,7 +315,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/content/h",
+							"raw": "{{baseURL}}/api/v1/content/search?search=hy&limit=1",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -313,7 +323,17 @@
 								"api",
 								"v1",
 								"content",
-								"h"
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "hy"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
 							]
 						}
 					},
