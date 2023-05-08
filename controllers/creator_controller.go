@@ -45,6 +45,37 @@ var GetCreatorDirectoryByDirectoryName = http.HandlerFunc(func(rw http.ResponseW
 	middlewares.SuccessArrRespond(allContent, rw)
 })
 
+var GetCreatorsByDirectoryName = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var allCreator []*models.GetCreatorProfileResp
+
+	opts := options.Find().SetSort(bson.D{primitive.E{Key: "subscriber_count", Value: -1}})
+
+	collection := client.Database("sodality").Collection("users")
+	cursor, err := collection.Find(context.TODO(), bson.D{
+		{"categories", bson.D{{"$all", bson.A{params["category_name"]}}}}}, opts)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.SuccessArrRespond(nil, rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	for cursor.Next(context.TODO()) {
+		var creator models.GetCreatorProfileResp
+		err := cursor.Decode(&creator)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+
+		allCreator = append(allCreator, &creator)
+	}
+
+	middlewares.SuccessArrRespond(allCreator, rw)
+})
+
 var GetAllCreatorsContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	var allContent []*models.GetAllContentWithCreatorResp
 	// opts := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})
