@@ -55,10 +55,28 @@ var PostContent = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	arr := addIfNotExists(existingUser, content)
+	_, err = userCollection.UpdateOne(context.TODO(), bson.D{primitive.E{Key: "_id", Value: userID}}, bson.D{primitive.E{Key: "$set", Value: bson.D{primitive.E{Key: "categories", Value: arr}}}})
+	if err != nil {
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
 
 	res, _ := json.Marshal(result.InsertedID)
 	middlewares.SuccessResponse(`inserted at `+strings.Replace(string(res), `"`, ``, 2), rw)
 })
+
+func addIfNotExists(existingUser models.User, content models.Content) []string {
+	if existingUser.Categories == nil {
+		return []string{content.CategoryName}
+	}
+	for _, value := range existingUser.Categories {
+		if value == content.CategoryName {
+			return existingUser.Categories
+		}
+	}
+	return append(existingUser.Categories, content.CategoryName)
+}
 
 // GetContentByID -> Get content of user by content id
 var GetContentByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {

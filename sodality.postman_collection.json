@@ -94,13 +94,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMyIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTM4YzMzYmNhYjc5MzljNmRlODJkNyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzMjkxNTQyfQ.VIAcjXE7ui8cTh3BMmkZuDZMJY1dZ13p6Ax8P6sSkp4",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6ImRmYXNkZjMyc3dzd3JmZGF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwZjU1MGQ5ZDQ4NjFjOGIwMWYyMyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzNjQxNzk0fQ.9AZQ7fldQxO121Zad4Po8CSh4-qjIJ2an8uXJ4q65XY",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"abcd01234\",\n    \"dash\": \"63efc15d2edf89dd5f49c0a3\",\n    \"bio\": \"My naeme muc\",\n    \"header_image\": \" pic\",\n    \"categories\":[\n      \"Gaming Creators\",\n      \"Writers & Journalists\"\n    ],\n    \"title\": \"title\",\n    \"subtitle\": \"subtitle\",\n    \"description\": \"description\",\n    \"avatar\": \"avatar\",\n    \"role\": \"dash\"\n}",
+							"raw": "{\n    \"dash\": \"63efc15d2edf89dd5f49c0a3\",\n    \"bio\": \"My naeme muc\",\n    \"header_image\": \" pic\",\n    \"categories\":[\n      \"Gaming Creators\",\n      \"Writers & Journalists\",\n      \"z\"\n    ],\n    \"title\": \"title\",\n    \"subtitle\": \"subtitle\",\n    \"description\": \"description\",\n    \"avatar\": \"avatar\",\n    \"role\": \"dash\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -367,12 +367,12 @@
 					"response": []
 				},
 				{
-					"name": "Get Creator Content By Directory Nsme",
+					"name": "Get Creator Content By Directory Name",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/content/category/gaming/",
+							"raw": "{{baseURL}}/api/v1/creator/content/category/Writers & Journalists/",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -382,8 +382,30 @@
 								"creator",
 								"content",
 								"category",
-								"gaming",
+								"Writers & Journalists",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Creator By Directory Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/creator/get/category/Gaming Creators",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"get",
+								"category",
+								"Gaming Creators"
 							]
 						}
 					},
@@ -617,7 +639,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/home/mubashir/Pictures/Screenshots/Screenshot from 2023-05-04 10-23-58.png"
+									"src": "/home/mubashir/Pictures/Screenshots/Screenshot from 2023-05-05 21-25-52.png"
 								}
 							]
 						},
