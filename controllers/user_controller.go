@@ -114,6 +114,28 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	followersCollection := client.Database("sodality").Collection("followers")
+	cursor, err := followersCollection.Find(context.TODO(), bson.D{primitive.E{Key: "creator_id", Value: params["id"]}})
+	if err == mongo.ErrNoDocuments {
+		user.CreatorSupporters = nil
+		// return
+	}
+	if err != nil {
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	for cursor.Next(context.TODO()) {
+		var followers bson.M
+		err := cursor.Decode(&followers)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+		userId := followers["user_id"].(string)
+
+		user.CreatorSupporters = append(user.CreatorSupporters, userId)
+	}
+
 	// user.Password = ""
 	// user.OTPEnabled = false
 	// user.OTPSecret = ""
