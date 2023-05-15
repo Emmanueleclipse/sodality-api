@@ -63,6 +63,7 @@ type GetCreatorProfileResp struct {
 	Bio            string   `json:"bio" bson:"bio,omitempty"`
 	Avatar         string   `json:"avatar" bson:"avatar,omitempty"`
 	Dash           string   `json:"dash" bson:"dash,omitempty"`
+	Supporters     int64    `json:"supporters" bson:"supporters,omitempty"`
 	HeaderImage    string   `json:"header_image" bson:"header_image,omitempty"`
 	Title          string   `json:"title" bson:"title,omitempty"`
 	SubTitle       string   `json:"subtitle" bson:"subtitle,omitempty"`
