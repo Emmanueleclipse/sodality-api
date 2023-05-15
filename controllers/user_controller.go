@@ -117,7 +117,7 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 	followersCollection := client.Database("sodality").Collection("followers")
 	cursor, err := followersCollection.Find(context.TODO(), bson.D{primitive.E{Key: "creator_id", Value: params["id"]}})
 	if err == mongo.ErrNoDocuments {
-		user.CreatorSupporters = nil
+		user.Creatorfollowers = nil
 		// return
 	}
 	if err != nil {
@@ -133,7 +133,7 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 		}
 		userId := followers["user_id"].(string)
 
-		user.CreatorSupporters = append(user.CreatorSupporters, userId)
+		user.Creatorfollowers = append(user.Creatorfollowers, userId)
 	}
 
 	// user.Password = ""
