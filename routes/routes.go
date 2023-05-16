@@ -18,6 +18,8 @@ func Routes() *mux.Router {
 	user.HandleFunc("/register", controllers.RegisterUser).Methods("POST")
 	user.HandleFunc("/login", controllers.LoginUser).Methods("POST")
 	user.HandleFunc("/{id}", controllers.GetUserByID).Methods("GET")
+	user.HandleFunc("/username/{username}", controllers.GetUserByUsername).Methods("GET")
+
 	user.HandleFunc("/profile/", middlewares.IsAuthorized(controllers.GetProfile)).Methods("GET")
 	user.HandleFunc("/update", middlewares.IsAuthorized(controllers.UpdateUser)).Methods("PUT")
 

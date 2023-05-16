@@ -143,6 +143,50 @@ var GetUserByID = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request)
 	middlewares.SuccessArrRespond(user, rw)
 })
 
+// GetUserByID -> Get user details with user id
+var GetUserByUsername = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var user models.GetCreatorProfileResp
+
+	collection := client.Database("sodality").Collection("users")
+	err := collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: params["username"]}}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("user does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	followersCollection := client.Database("sodality").Collection("followers")
+	cursor, err := followersCollection.Find(context.TODO(), bson.D{primitive.E{Key: "creator_id", Value: user.ID.Hex()}})
+	if err == mongo.ErrNoDocuments {
+		user.Creatorfollowers = nil
+		// return
+	}
+	if err != nil {
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+	for cursor.Next(context.TODO()) {
+		var followers bson.M
+		err := cursor.Decode(&followers)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
+		userId := followers["user_id"].(string)
+
+		user.Creatorfollowers = append(user.Creatorfollowers, userId)
+	}
+
+	// user.Password = ""
+	// user.OTPEnabled = false
+	// user.OTPSecret = ""
+	// user.OTPAuthURL = ""
+	middlewares.SuccessArrRespond(user, rw)
+})
+
 // GetProfile -> Get own profile
 var GetProfile = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	props, _ := r.Context().Value("props").(jwt.MapClaims)
