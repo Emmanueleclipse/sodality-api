@@ -76,5 +76,9 @@ func Routes() *mux.Router {
 	security.HandleFunc("/verify", middlewares.IsAuthorized(controllers.VerifyOTP)).Methods("POST")
 	security.HandleFunc("/2fa/update", middlewares.IsAuthorized(controllers.Update2FA)).Methods("PUT")
 
+	tiers := creator.PathPrefix("/tiers").Subrouter()
+	tiers.HandleFunc("/update", middlewares.IsAuthorized(controllers.AddCreatorTiers)).Methods("PUT")
+	tiers.HandleFunc("/{id}", controllers.GetCreatorTierByUserID).Methods("GET")
+
 	return router
 }

@@ -200,3 +200,14 @@ type GenerateAuthURL struct {
 	OTPSecret string `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
 	URL       string `json:"otpauth_url,omitempty" bson:"otpauth_url,omitempty"`
 }
+
+type CreatorTiers struct {
+	ID             primitive.ObjectID `json:"_id" bson:"_id,omitempty"`
+	UserId         string             `json:"user_id" bson:"user_id,omitempty"`
+	TierOneName    string             `json:"tier_one_name" bson:"tier_one_name,omitempty"`
+	TierOnePrice   float64            `json:"tier_one_price" bson:"tier_one_price,omitempty"`
+	TierTwoName    string             `json:"tier_two_name" bson:"tier_two_name,omitempty"`
+	TierTwoPrice   float64            `json:"tier_two_price" bson:"tier_two_price,omitempty"`
+	TierThreeName  string             `json:"tier_three_name" bson:"tier_three_name,omitempty"`
+	TierThreePrice float64            `json:"tier_three_price" bson:"tier_three_price,omitempty"`
+}

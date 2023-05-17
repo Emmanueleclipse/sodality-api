@@ -88,6 +88,27 @@
 					"response": []
 				},
 				{
+					"name": "get user by username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/user/username/abc13",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"username",
+								"abc13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update_profile",
 					"request": {
 						"method": "PUT",
@@ -233,13 +254,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6ImRmYXNkZjMyc3dzd3JmZGF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwZjU1MGQ5ZDQ4NjFjOGIwMWYyMyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzMzg5NTk3fQ.J-lxaZ4stRnZDa-JkQp6Zxv_ztYaBqREd_XOCYd5pQA",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4MzgyNjM3MH0.5iZjLZxLAPQi3cWwTAyZNKLn0p-V-BzxMPK3RstTo7s",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"hyyyy\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"gaming\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": true,\n    \"content_type\": \"Supporter\"\n}",
+							"raw": "{\n    \"title\": \"hyyyy\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"Gaming Creators\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": true,\n    \"content_type\": \"Supporter\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -443,7 +464,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMSIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmRheXVkZGZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwZmYwMGQ5ZDQ4NjFjOGIwMWYyNSIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzMzE3MTEyfQ.5-QICGwIc3sPACr1YpIqqTGmWK5UHsvA95W4kqN5d58",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NDI2MjI3MX0.9paUyElViALnnhOapYSzMewvO_BRU_4H_h7NG5c7wbA",
 								"type": "text"
 							}
 						],
@@ -475,7 +496,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/6441564e624ede29ea22ef64/followers/",
+							"raw": "{{baseURL}}/api/v1/creator/6454085c36b8acffc4220cdc/followers/",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -483,7 +504,7 @@
 								"api",
 								"v1",
 								"creator",
-								"6441564e624ede29ea22ef64",
+								"6454085c36b8acffc4220cdc",
 								"followers",
 								""
 							]
@@ -498,12 +519,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMSIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmRheXVkZGZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwZmYwMGQ5ZDQ4NjFjOGIwMWYyNSIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzMzE3MTEyfQ.5-QICGwIc3sPACr1YpIqqTGmWK5UHsvA95W4kqN5d58",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NDI2MjI3MX0.9paUyElViALnnhOapYSzMewvO_BRU_4H_h7NG5c7wbA",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/unfollow/6454085c36b8acffc4220cdc",
+							"raw": "{{baseURL}}/api/v1/creator/unfollow/64540f550d9d4861c8b01f23",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -512,7 +533,7 @@
 								"v1",
 								"creator",
 								"unfollow",
-								"6454085c36b8acffc4220cdc"
+								"64540f550d9d4861c8b01f23"
 							]
 						}
 					},
