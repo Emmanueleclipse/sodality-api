@@ -27,6 +27,7 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	user.IsNew = true
 	collection := client.Database("sodality").Collection("users")
 	var existingUser models.User
 	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: user.Username}}).Decode(&existingUser)
@@ -278,6 +279,7 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 				primitive.E{Key: "dash", Value: newUser.Dash},
 				primitive.E{Key: "bio", Value: newUser.Bio},
 				primitive.E{Key: "role", Value: newUser.Role},
+				primitive.E{Key: "is_new", Value: false},
 			},
 		},
 	})

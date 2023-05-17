@@ -32,6 +32,7 @@ type User struct {
 	Twitter        string   `json:"twitter,omitempty" bson:"twitter,omitempty"`
 	Youtube        string   `json:"youtube,omitempty" bson:"youtube,omitempty"`
 	Odysee         string   `json:"odysee,omitempty" bson:"odysee,omitempty"`
+	IsNew          bool     `json:"is_new" bson:"is_new"`
 }
 
 type GetAllCreatorsResp struct {
