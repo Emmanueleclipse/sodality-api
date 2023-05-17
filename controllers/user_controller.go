@@ -95,12 +95,7 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 		middlewares.ErrorResponse("failed to generate token", rw)
 		return
 	}
-	existingUser.Password = ""
-	existingUser.OTPEnabled = false
-	existingUser.OTPSecret = ""
-	existingUser.OTPAuthURL = ""
-	existingUser.JwtToken = string(token)
-	middlewares.SuccessRespond(existingUser, rw)
+	middlewares.SuccessResponse(string(token), rw)
 })
 
 // GetUserByID -> Get user details with user id
