@@ -17,7 +17,7 @@ import (
 var AddCreatorTiers = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	props, _ := r.Context().Value("props").(jwt.MapClaims)
 
-	userId, _ := props["user_id"].(string)
+	username, _ := props["username"].(string)
 
 	var tier models.CreatorTiers
 	err := json.NewDecoder(r.Body).Decode(&tier)
@@ -27,10 +27,10 @@ var AddCreatorTiers = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Requ
 	}
 	var existedTier models.CreatorTiers
 
-	tier.UserId = userId
+	tier.Username = username
 
 	collection := client.Database("sodality").Collection("creatorTiers")
-	err = collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: userId}}).Decode(&existedTier)
+	err = collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: username}}).Decode(&existedTier)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			_, err := collection.InsertOne(r.Context(), tier)
@@ -46,7 +46,7 @@ var AddCreatorTiers = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Requ
 		}
 	}
 
-	_, err = collection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "user_id", Value: userId}}, bson.D{
+	_, err = collection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "username", Value: username}}, bson.D{
 		primitive.E{
 			Key: "$set",
 			Value: bson.D{
@@ -71,7 +71,7 @@ var GetCreatorTierByUserID = http.HandlerFunc(func(rw http.ResponseWriter, r *ht
 	var tier models.CreatorTiers
 
 	collection := client.Database("sodality").Collection("creatorTiers")
-	err := collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: params["id"]}}).Decode(&tier)
+	err := collection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: params["username"]}}).Decode(&tier)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.SuccessRespond(nil, rw)

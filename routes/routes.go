@@ -78,7 +78,7 @@ func Routes() *mux.Router {
 
 	tiers := creator.PathPrefix("/tiers").Subrouter()
 	tiers.HandleFunc("/update", middlewares.IsAuthorized(controllers.AddCreatorTiers)).Methods("PUT")
-	tiers.HandleFunc("/{id}", controllers.GetCreatorTierByUserID).Methods("GET")
+	tiers.HandleFunc("/{username}", controllers.GetCreatorTierByUserID).Methods("GET")
 
 	return router
 }
