@@ -62,8 +62,8 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/{creator_id}/supporters/count", controllers.GetCreatorSupporter).Methods("GET")
 
 	// ipfs endpoint
-	// file := api.PathPrefix("/file").Subrouter()
-	// file.HandleFunc("/upload", controllers.UploadFile).Methods("POST")
+	file := api.PathPrefix("/file").Subrouter()
+	file.HandleFunc("/upload", controllers.UploadFile).Methods("POST")
 
 	// donation endpoint
 	donate := api.PathPrefix("/donate").Subrouter()
