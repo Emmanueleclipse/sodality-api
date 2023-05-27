@@ -41,7 +41,7 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/get/category/{category_name}", controllers.GetCreatorsByDirectoryName).Methods("GET")
 
 	// supporter get creator content
-	creator.HandleFunc("/content/{id}/supporter", middlewares.IsAuthorized(controllers.GetContentForSpecificSupporterByID)).Methods("GET")
+	// creator.HandleFunc("/content/{id}/supporter", middlewares.IsAuthorized(controllers.GetContentForSpecificSupporterByID)).Methods("GET")
 	creator.HandleFunc("/content/all/supporter/", middlewares.IsAuthorized(controllers.GetAllCreatorsContentForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/{username}/supporter/", middlewares.IsAuthorized(controllers.GetCreatorContentsForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/content/category/{category_name}/supporter", middlewares.IsAuthorized(controllers.GetCreatorDirectoryByDirectoryNameForSpecificSupporter)).Methods("GET")
