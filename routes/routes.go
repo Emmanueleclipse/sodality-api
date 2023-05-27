@@ -43,7 +43,7 @@ func Routes() *mux.Router {
 	// supporter get creator content
 	creator.HandleFunc("/content/{id}/supporter", middlewares.IsAuthorized(controllers.GetContentForSpecificSupporterByID)).Methods("GET")
 	creator.HandleFunc("/content/all/supporter/", middlewares.IsAuthorized(controllers.GetAllCreatorsContentForSpecificSupporter)).Methods("GET")
-	creator.HandleFunc("/{id}/supporter/", middlewares.IsAuthorized(controllers.GetCreatorContentsForSpecificSupporter)).Methods("GET")
+	creator.HandleFunc("/{username}/supporter/", middlewares.IsAuthorized(controllers.GetCreatorContentsForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/content/category/{category_name}/supporter", middlewares.IsAuthorized(controllers.GetCreatorDirectoryByDirectoryNameForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/{creator_id}/supporters/record", controllers.GetCreatorSupportersRecord).Methods("GET")
 

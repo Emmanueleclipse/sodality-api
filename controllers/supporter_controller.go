@@ -176,8 +176,21 @@ var GetCreatorContentsForSpecificSupporter = http.HandlerFunc(func(rw http.Respo
 	props, _ := r.Context().Value("props").(jwt.MapClaims)
 	var creatorContents []*models.Content
 
+	var user models.User
+
+	userCollection := client.Database("sodality").Collection("users")
+	err := userCollection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: params["username"]}}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("user does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
 	collection := client.Database("sodality").Collection("content")
-	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: params["id"]}})
+	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "user_id", Value: user.ID.Hex()}})
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.ErrorResponse("content id does not exist", rw)
