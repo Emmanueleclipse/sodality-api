@@ -345,9 +345,23 @@ var GetCreatorSupportersRecord = http.HandlerFunc(func(rw http.ResponseWriter, r
 
 	var supporterRecord []*models.DonateResp
 
+	var user models.User
+
+	userCollection := client.Database("sodality").Collection("users")
+	err := userCollection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: params["username"]}}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.ErrorResponse("user does not exist", rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
 	opts := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})
 	collection := client.Database("sodality").Collection("donations")
-	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "creator_id", Value: params["creator_id"]}}, opts)
+
+	cursor, err := collection.Find(context.TODO(), bson.D{primitive.E{Key: "creator_id", Value: user.ID.Hex()}}, opts)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.ErrorResponse("content does not exist", rw)
