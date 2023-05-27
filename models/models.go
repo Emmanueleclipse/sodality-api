@@ -105,7 +105,7 @@ type Content struct {
 	CategoryName string             `json:"category_name,omitempty" bson:"category_name,omitempty"`
 	Title        string             `json:"title,omitempty" bson:"title,omitempty"`
 	Body         string             `json:"body,omitempty" bson:"body,omitempty"`
-	ContentType  string             `json:"content_type,omitempty" bson:"content_type,omitempty"`
+	TierType     int                `json:"tier_type,omitempty" bson:"tier_type,omitempty"`
 	Type         string             `json:"type,omitempty" bson:"type,omitempty"`
 	IpfsURL      string             `json:"ipfs_url,omitempty" bson:"ipfs_url,omitempty"`
 	Fund         float64            `json:"fund,omitempty" bson:"fund,omitempty"`
@@ -170,6 +170,7 @@ type Donate struct {
 	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	UserID       string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
 	CreatorID    string             `json:"creator_id,omitempty" bson:"creator_id,omitempty"`
+	BuyTier      int                `json:"buy_tier,omitempty" bson:"buy_tier,omitempty"`
 	Donate       float64            `json:"donate,omitempty" bson:"donate,omitempty"`
 	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`

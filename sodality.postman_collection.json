@@ -254,13 +254,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4MzgyNjM3MH0.5iZjLZxLAPQi3cWwTAyZNKLn0p-V-BzxMPK3RstTo7s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTI2MjgwMH0.6Pr18Aj8-E1TQs7WXCYRkETgammi4kDEzHTDkLCLzdc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"hyyyy\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"Gaming Creators\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": true,\n    \"content_type\": \"Supporter\"\n}",
+							"raw": "{\n    \"title\": \"mubashir\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"Gaming Creators\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": true,\n    \"content_type\": \"Supporter\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -683,6 +683,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "upload file Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/mubashir/Pictures/Screenshots/Screenshot from 2023-05-05 21-25-52.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://18.117.99.208:3000/api/v1/file/upload",
+							"protocol": "http",
+							"host": [
+								"18",
+								"117",
+								"99",
+								"208"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -850,13 +885,13 @@
 					"response": []
 				},
 				{
-					"name": "Get Creator Contents for specific supporter by creator id",
+					"name": "Get Creator Contents for specific supporter by creator username",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwMTIzNDUiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZhZmRoZmZkd2UiLCJ1c2VyX2lkIjoiNjQ0ZTEwMTIwMzBmYjVlNTkzYzM2YWRjIiwicm9sZSI6InN1cHBvcnRlciIsImV4cCI6MTY4Mjg0NDczNX0.9J4kZert_t8zki7ajnDwa2yi0gXKOPbv_oozUhzUUhQ",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTI2MjgwMH0.6Pr18Aj8-E1TQs7WXCYRkETgammi4kDEzHTDkLCLzdc",
 								"type": "text"
 							}
 						],
@@ -918,7 +953,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/644bd0fbeaa41c31f21b5323/supporters/record",
+							"raw": "{{baseURL}}/api/v1/creator/abc13/supporters/record",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -926,7 +961,7 @@
 								"api",
 								"v1",
 								"creator",
-								"644bd0fbeaa41c31f21b5323",
+								"abc13",
 								"supporters",
 								"record"
 							]
@@ -1048,13 +1083,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NDQzNDEyMH0.fFx8K70Xa_wL4kdKxsohlnBgrONBbQXFc7EZ10FZjvc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMzMiLCJkYXNoIjoiNjNlZmMxNWQyZWRmODlkZDVmNDljMGEzIiwidXNlcl9pZCI6IjY0NjUxZmVmMWU4NDNlMWMzODNmYmY1OSIsInJvbGUiOiJkYXNoIiwiZXhwIjoxNjg0NTA5NjczfQ.wkIpkM7yEdHvbqMcShafeqWTvYVj0GRvzvaFGYaHG7E",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"tier_one_name\": \"name 11\",\n\t\"tier_one_price\": 5,\n\t\"tier_two_name\": \"name 2\",\n\t\"tier_two_price\": 10,\n\t\"tier_three_name\": \"name 3\",\n\t\"tier_three_price\": 15\n}",
+							"raw": "{\n\t\"tier_one_name\": \"name 11\",\n\t\"tier_one_price\": 5,\n\t\"tier_two_name\": \"name 22\",\n\t\"tier_two_price\": 10,\n\t\"tier_three_name\": \"name 3\",\n\t\"tier_three_price\": 15\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1083,7 +1118,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/tiers/64540f550d9d4861c8b01f23",
+							"raw": "{{baseURL}}/api/v1/creator/tiers/abcd13",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -1092,7 +1127,7 @@
 								"v1",
 								"creator",
 								"tiers",
-								"64540f550d9d4861c8b01f23"
+								"abcd13"
 							]
 						}
 					},
