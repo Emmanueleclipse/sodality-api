@@ -234,18 +234,21 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	if len(newUser.Username) <= 0 {
 		newUser.Username = user.Username
 	}
-	// if len(newUser.Email) <= 0 {
-	// 	newUser.Email = user.Email
+	// // if len(newUser.Email) <= 0 {
+	// // 	newUser.Email = user.Email
+	// // }
+	// // if newUser.SubscriberCount <= 0 {
+	// // 	newUser.SubscriberCount = user.SubscriberCount
+	// // }
+	// if len(newUser.HeaderImage) <= 0 {
+	// 	newUser.HeaderImage = user.HeaderImage
 	// }
-	// if newUser.SubscriberCount <= 0 {
-	// 	newUser.SubscriberCount = user.SubscriberCount
+	// if len(newUser.Avatar) <= 0 {
+	// 	newUser.Avatar = user.Avatar
 	// }
-	if len(newUser.HeaderImage) <= 0 {
-		newUser.HeaderImage = user.HeaderImage
-	}
-	if len(newUser.Avatar) <= 0 {
-		newUser.Avatar = user.Avatar
-	}
+	// if len(newUser.ProfileImage) <= 0 {
+	// 	newUser.ProfileImage = user.ProfileImage
+	// }
 	if len(newUser.Dash) <= 0 {
 		newUser.Dash = user.Dash
 	}
@@ -272,10 +275,10 @@ var UpdateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 				primitive.E{Key: "username", Value: newUser.Username},
 				primitive.E{Key: "categories", Value: newUser.Categories},
 				primitive.E{Key: "header_image", Value: newUser.HeaderImage},
+				primitive.E{Key: "profile_image", Value: newUser.ProfileImage},
 				primitive.E{Key: "title", Value: newUser.Title},
 				primitive.E{Key: "subtitle", Value: newUser.SubTitle},
 				primitive.E{Key: "description", Value: newUser.Description},
-				primitive.E{Key: "avatar", Value: newUser.Avatar},
 				primitive.E{Key: "dash", Value: newUser.Dash},
 				primitive.E{Key: "bio", Value: newUser.Bio},
 				primitive.E{Key: "role", Value: newUser.Role},

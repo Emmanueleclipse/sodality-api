@@ -15,6 +15,7 @@ type User struct {
 	// SubscriberCount int64              `json:"subscriber_count,omitempty" bson:"subscriber_count,omitempty"`
 	Role           string   `json:"role,omitempty" bson:"role,omitempty"`
 	Mnemonic       string   `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
+	ProfileImage   string   `json:"profile_image,omitempty" bson:"profile_image,omitempty"`
 	Bio            string   `json:"bio,omitempty" bson:"bio,omitempty"`
 	Avatar         string   `json:"avatar,omitempty" bson:"avatar,omitempty"`
 	Dash           string   `json:"dash,omitempty" bson:"dash,omitempty"`
@@ -167,14 +168,14 @@ type FileResp struct {
 }
 
 type Donate struct {
-	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	UserID       string             `json:"user_id,omitempty" bson:"user_id,omitempty"`
-	CreatorID    string             `json:"creator_id,omitempty" bson:"creator_id,omitempty"`
-	BuyTier      int                `json:"buy_tier,omitempty" bson:"buy_tier,omitempty"`
-	Donate       float64            `json:"donate,omitempty" bson:"donate,omitempty"`
-	CurrencyType string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
-	CreatedAt    time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
-	ExpiredAt    time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
+	ID              primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username        string             `json:"username,omitempty" bson:"username,omitempty"`
+	CreatorUsername string             `json:"creator_username,omitempty" bson:"creator_username,omitempty"`
+	BuyTier         int                `json:"buy_tier,omitempty" bson:"buy_tier,omitempty"`
+	Donate          float64            `json:"donate,omitempty" bson:"donate,omitempty"`
+	CurrencyType    string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	CreatedAt       time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ExpiredAt       time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
 }
 
 type DonateContent struct {

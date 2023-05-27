@@ -211,8 +211,8 @@ var GetCreatorContentsForSpecificSupporter = http.HandlerFunc(func(rw http.Respo
 	}
 
 	filter := bson.M{"$and": []interface{}{
-		bson.M{"user_id": props["user_id"].(string)},
-		bson.M{"creator_id": user.ID.Hex()},
+		bson.M{"username": props["username"].(string)},
+		bson.M{"creator_username": params["username"]},
 		bson.M{"expired_at": bson.M{"$gte": time.Now().UTC()}},
 	}}
 
@@ -242,19 +242,7 @@ var GetCreatorContentsForSpecificSupporter = http.HandlerFunc(func(rw http.Respo
 			continue
 		}
 
-		tiersCollection := client.Database("sodality").Collection("creatorTiers")
-		err = tiersCollection.FindOne(context.TODO(), bson.D{primitive.E{Key: "username", Value: params["username"]}}).Decode(&user)
-		if err != nil {
-			if err == mongo.ErrNoDocuments {
-				cont.Locked = false
-				continue
-			}
-			middlewares.ServerErrResponse(err.Error(), rw)
-			return
-		}
-
 		for _, donate := range allDonationForCreator {
-
 			if donate.BuyTier == TierOne && cont.TierType == TierOne {
 				cont.Locked = false
 			} else if donate.BuyTier == TierTwo {
@@ -265,8 +253,12 @@ var GetCreatorContentsForSpecificSupporter = http.HandlerFunc(func(rw http.Respo
 				if cont.TierType == TierOne || cont.TierType == TierTwo || cont.TierType == TierThree {
 					cont.Locked = false
 				}
-			} else if (donate.BuyTier == TierOne || donate.BuyTier == TierTwo || donate.BuyTier == TierThree) && cont.TierType == AllTier {
-				cont.Locked = false
+			}
+
+			if cont.TierType == AllTier {
+				if cont.TierType == TierOne || cont.TierType == TierTwo || cont.TierType == TierThree || cont.TierType == AllTier {
+					cont.Locked = false
+				}
 			}
 		}
 	}

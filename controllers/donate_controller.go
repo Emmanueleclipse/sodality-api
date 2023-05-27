@@ -24,31 +24,30 @@ var DonateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	username, _ := props["username"].(string)
+	if username == donate.CreatorUsername {
+		middlewares.ServerErrResponse("you cannot donate yourself", rw)
+		return
+	}
 
 	var existingCreator models.User
-	creatorID, _ := primitive.ObjectIDFromHex(donate.CreatorID)
+	// creatorID, _ := primitive.ObjectIDFromHex(donate.CreatorID)
 
 	userCollection := client.Database("sodality").Collection("users")
-	err = userCollection.FindOne(r.Context(), bson.D{primitive.E{Key: "_id", Value: creatorID}, primitive.E{Key: "role", Value: "creator"}}).Decode(&existingCreator)
+	err = userCollection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: donate.CreatorUsername}, primitive.E{Key: "role", Value: "creator"}}).Decode(&existingCreator)
 	if err != nil && err != mongo.ErrNoDocuments {
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
 
-	if existingCreator.ID != creatorID || err == mongo.ErrNoDocuments {
+	if err == mongo.ErrNoDocuments {
 		middlewares.ErrorResponse("creator does not exists", rw)
 		return
 	}
 
-	userID, _ := props["user_id"].(string)
-	donate.UserID = userID
+	donate.Username = username
 	donate.CreatedAt = time.Now().UTC()
 	donate.ExpiredAt = time.Now().UTC().AddDate(0, 1, 0)
-
-	if userID == donate.CreatorID {
-		middlewares.ServerErrResponse("you cannot donate yourself", rw)
-		return
-	}
 
 	donationCollection := client.Database("sodality").Collection("donations")
 	result, err := donationCollection.InsertOne(context.TODO(), donate)
@@ -60,7 +59,7 @@ var DonateUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 	count := existingCreator.TotalDonations
 	count += donate.Donate
 
-	_, err = userCollection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "_id", Value: creatorID}}, bson.D{
+	_, err = userCollection.UpdateOne(r.Context(), bson.D{primitive.E{Key: "username", Value: donate.CreatorUsername}}, bson.D{
 		primitive.E{
 			Key: "$set",
 			Value: bson.D{
