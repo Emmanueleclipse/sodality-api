@@ -406,3 +406,30 @@ var GetCreatorSupportersRecord = http.HandlerFunc(func(rw http.ResponseWriter, r
 
 	middlewares.SuccessRespond(supporterRecord, rw)
 })
+
+var GetRecentSubscription = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	props, _ := r.Context().Value("props").(jwt.MapClaims)
+
+	var supporterRecord *models.LastDonationResp
+
+	opts := options.FindOne().SetSort(bson.D{{Key: "created_at", Value: -1}})
+	collection := client.Database("sodality").Collection("donations")
+
+	filter := bson.M{"$and": []interface{}{
+		bson.M{"username": props["username"].(string)},
+		bson.M{"creator_username": params["username"]},
+	}}
+
+	err := collection.FindOne(context.TODO(), filter, opts).Decode(&supporterRecord)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			middlewares.SuccessRespond(nil, rw)
+			return
+		}
+		middlewares.ServerErrResponse(err.Error(), rw)
+		return
+	}
+
+	middlewares.SuccessRespond(supporterRecord, rw)
+})

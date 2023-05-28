@@ -46,6 +46,7 @@ func Routes() *mux.Router {
 	creator.HandleFunc("/{username}/supporter/", middlewares.IsAuthorized(controllers.GetCreatorContentsForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/content/category/{category_name}/supporter", middlewares.IsAuthorized(controllers.GetCreatorDirectoryByDirectoryNameForSpecificSupporter)).Methods("GET")
 	creator.HandleFunc("/{username}/supporters/record", controllers.GetCreatorSupportersRecord).Methods("GET")
+	creator.HandleFunc("/{username}/supporter/recent_subscription", middlewares.IsAuthorized(controllers.GetRecentSubscription)).Methods("GET")
 
 	// setting endpoint
 	setting := creator.PathPrefix("/setting").Subrouter()

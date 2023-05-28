@@ -200,6 +200,17 @@ type DonateResp struct {
 	ExpiredAt    time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
 }
 
+type LastDonationResp struct {
+	ID              primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username        string             `json:"username,omitempty" bson:"username,omitempty"`
+	CreatorUsername string             `json:"creator_username,omitempty" bson:"creator_username,omitempty"`
+	BuyTier         int                `json:"buy_tier,omitempty" bson:"buy_tier,omitempty"`
+	Donate          float64            `json:"donate,omitempty" bson:"donate,omitempty"`
+	CurrencyType    string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
+	CreatedAt       time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`
+	ExpiredAt       time.Time          `json:"expired_at,omitempty" bson:"expired_at,omitempty"`
+}
+
 type GenerateAuthURL struct {
 	OTPSecret string `json:"otp_secret,omitempty" bson:"otp_secret,omitempty"`
 	URL       string `json:"otpauth_url,omitempty" bson:"otpauth_url,omitempty"`
