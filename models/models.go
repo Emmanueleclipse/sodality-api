@@ -64,7 +64,7 @@ type GetCreatorProfileResp struct {
 	Role     string             `json:"role" bson:"role,omitempty"`
 	// Mnemonic       string             `json:"mnemonic" bson:"mnemonic,omitempty"`
 	Bio              string   `json:"bio" bson:"bio,omitempty"`
-	Avatar           string   `json:"avatar" bson:"avatar,omitempty"`
+	ProfileImage     string   `json:"profile_image,omitempty" bson:"profile_image,omitempty"`
 	Dash             string   `json:"dash" bson:"dash,omitempty"`
 	Supporters       int64    `json:"supporters" bson:"supporters,omitempty"`
 	Creatorfollowers []string `json:"creator_followers" bson:"creator_followers,omitempty"`
