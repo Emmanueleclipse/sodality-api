@@ -205,6 +205,7 @@ type LastDonationResp struct {
 	Username        string             `json:"username,omitempty" bson:"username,omitempty"`
 	CreatorUsername string             `json:"creator_username,omitempty" bson:"creator_username,omitempty"`
 	BuyTier         int                `json:"buy_tier,omitempty" bson:"buy_tier,omitempty"`
+	AverageDonation float64            `json:"average_donate,omitempty" bson:"average_donate,omitempty"`
 	Donate          float64            `json:"donate,omitempty" bson:"donate,omitempty"`
 	CurrencyType    string             `json:"currency_type,omitempty" bson:"currency_type,omitempty"`
 	CreatedAt       time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`

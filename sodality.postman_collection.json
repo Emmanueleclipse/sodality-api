@@ -115,13 +115,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMzMiLCJkYXNoIjoiZGZhc2RmMzJzd3N3cmZheXVpdWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NjUxZmVmMWU4NDNlMWMzODNmYmY1OSIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjg0NDM1MzY4fQ.bAZO9Xks60vdCGZvftHqXdr1grFbCFz0V23iAqCxucM",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMyIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwODVjMzZiOGFjZmZjNDIyMGNkYyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjg1Mjc5NDgwfQ.Y-67ROcMAihn8RMk0WIuK1-e8VFSEZrSub7QmVEeVxk",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"dash\": \"63efc15d2edf89dd5f49c0a3\",\n    \"bio\": \"My naeme muc\",\n    \"header_image\": \" pic\",\n    \"categories\":[\n      \"Gaming Creators\",\n      \"Writers & Journalists\",\n      \"z\"\n    ],\n    \"title\": \"title\",\n    \"subtitle\": \"subtitle\",\n    \"description\": \"description\",\n    \"avatar\": \"avatar\",\n    \"role\": \"dash\"\n}",
+							"raw": "{\n    \"dash\": \"63efc15d2edf89dd5f49c0a3\",\n    \"bio\": \"terererer muc\",\n    \"header_image\": \" pic1\",\n    \"categories\":[\n      \"Gaming Creators\",\n      \"Writers & Journalists\",\n      \"z\"\n    ],\n    \"title\": \"title\",\n    \"subtitle\": \"subtitle\",\n    \"description\": \"description\",\n    \"avatar\": \"avatar\",\n    \"role\": \"dash\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,13 +254,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTI2MjgwMH0.6Pr18Aj8-E1TQs7WXCYRkETgammi4kDEzHTDkLCLzdc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMyIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwODVjMzZiOGFjZmZjNDIyMGNkYyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjg1Mjc5NDgwfQ.Y-67ROcMAihn8RMk0WIuK1-e8VFSEZrSub7QmVEeVxk",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"mubashir\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"Gaming Creators\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": true,\n    \"content_type\": \"Supporter\"\n}",
+							"raw": "{\n    \"title\": \"content 44\",\n    \"body\": \"this is for testing\",\n    \"category_name\": \"Gaming Creators\",\n    \"ipfs_url\": \"enter ipfs url\",\n    \"type\": \"mp4\",\n    \"public\": false,\n    \"tier_type\": 4\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -665,50 +665,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://18.117.99.208:3000/api/v1/file/upload",
-							"protocol": "http",
+							"raw": "{{baseURL}}/api/v1/file/upload",
 							"host": [
-								"18",
-								"117",
-								"99",
-								"208"
+								"{{baseURL}}"
 							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"file",
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "upload file Copy",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/home/mubashir/Pictures/Screenshots/Screenshot from 2023-05-05 21-25-52.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://18.117.99.208:3000/api/v1/file/upload",
-							"protocol": "http",
-							"host": [
-								"18",
-								"117",
-								"99",
-								"208"
-							],
-							"port": "3000",
 							"path": [
 								"api",
 								"v1",
@@ -731,13 +691,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6ImRmYXNkZjMyc3dzd3JmZGF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwZjU1MGQ5ZDQ4NjFjOGIwMWYyMyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjgzMzE3NzQ5fQ.D2OpA-sOSnYWHn4D9U3alm1GPNPAUGDm_XrUo0okWOE",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTI2MjgwMH0.6Pr18Aj8-E1TQs7WXCYRkETgammi4kDEzHTDkLCLzdc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"creator_id\": \"6454085c36b8acffc4220cdc\",\n    \"donate\": 12,\n    \"currency_type\": \"USD\"\n}",
+							"raw": "{\n    \"creator_username\": \"abcd13\",\n    \"buy_tier\": 2,\n    \"donate\": 12,\n    \"currency_type\": \"USD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -896,7 +856,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/644cfd63a3e98aa25721f690/supporter/",
+							"raw": "{{baseURL}}/api/v1/creator/abcd13/supporter/",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -904,7 +864,7 @@
 								"api",
 								"v1",
 								"creator",
-								"644cfd63a3e98aa25721f690",
+								"abcd13",
 								"supporter",
 								""
 							]
@@ -948,12 +908,40 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzAxMjM0IiwiZGFzaCI6ImRmYXNkZjMycmZhZmRmZmR3ZSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NDQxNWQwNzQ0M2I1MjM1N2NkMjliOTIiLCJleHAiOjE2ODIwMTI0NjB9.5yOL3T2vR6fEUaNRQA5Ma_mILR02T-AijR5ikuanNK8",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTM4NDc1MH0.AmZPBGpaFjNqQmjPFsWkea58yPUhMswZlEDCZnnqKIk",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{baseURL}}/api/v1/creator/abc13/supporters/record",
+							"raw": "{{baseURL}}/api/v1/creator/abcd13/supporters/record",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"creator",
+								"abcd13",
+								"supporters",
+								"record"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Last Donation for creator by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QwIiwiZGFzaCI6IjYzZWZjMTVkMmVkZjg5ZGQ1ZjQ5YzBhMyIsInVzZXJfaWQiOiI2NDU0MGY1NTBkOWQ0ODYxYzhiMDFmMjMiLCJyb2xlIjoiZGFzaCIsImV4cCI6MTY4NTM4NDc1MH0.AmZPBGpaFjNqQmjPFsWkea58yPUhMswZlEDCZnnqKIk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/creator/abc13/supporter/recent_subscription",
 							"host": [
 								"{{baseURL}}"
 							],
@@ -962,8 +950,8 @@
 								"v1",
 								"creator",
 								"abc13",
-								"supporters",
-								"record"
+								"supporter",
+								"recent_subscription"
 							]
 						}
 					},
@@ -1083,7 +1071,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMzMiLCJkYXNoIjoiNjNlZmMxNWQyZWRmODlkZDVmNDljMGEzIiwidXNlcl9pZCI6IjY0NjUxZmVmMWU4NDNlMWMzODNmYmY1OSIsInJvbGUiOiJkYXNoIiwiZXhwIjoxNjg0NTA5NjczfQ.wkIpkM7yEdHvbqMcShafeqWTvYVj0GRvzvaFGYaHG7E",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiY2QxMyIsImRhc2giOiJkZmFzZGYzMnN3c3dyZmF5dWZkaGZmZHdlIiwidXNlcl9pZCI6IjY0NTQwODVjMzZiOGFjZmZjNDIyMGNkYyIsInJvbGUiOiJjcmVhdG9yIiwiZXhwIjoxNjg1Mjc5NDgwfQ.Y-67ROcMAihn8RMk0WIuK1-e8VFSEZrSub7QmVEeVxk",
 								"type": "text"
 							}
 						],

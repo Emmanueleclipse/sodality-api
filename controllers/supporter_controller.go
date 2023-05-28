@@ -411,9 +411,9 @@ var GetRecentSubscription = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 	params := mux.Vars(r)
 	props, _ := r.Context().Value("props").(jwt.MapClaims)
 
-	var supporterRecord *models.LastDonationResp
+	var supporterRecord []*models.LastDonationResp
 
-	opts := options.FindOne().SetSort(bson.D{{Key: "created_at", Value: -1}})
+	opts := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})
 	collection := client.Database("sodality").Collection("donations")
 
 	filter := bson.M{"$and": []interface{}{
@@ -421,7 +421,7 @@ var GetRecentSubscription = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 		bson.M{"creator_username": params["username"]},
 	}}
 
-	err := collection.FindOne(context.TODO(), filter, opts).Decode(&supporterRecord)
+	cursor, err := collection.Find(context.TODO(), filter, opts)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			middlewares.SuccessRespond(nil, rw)
@@ -430,6 +430,27 @@ var GetRecentSubscription = http.HandlerFunc(func(rw http.ResponseWriter, r *htt
 		middlewares.ServerErrResponse(err.Error(), rw)
 		return
 	}
+	for cursor.Next(context.TODO()) {
+		var record models.LastDonationResp
+		err := cursor.Decode(&record)
+		if err != nil {
+			middlewares.ServerErrResponse(err.Error(), rw)
+			return
+		}
 
-	middlewares.SuccessRespond(supporterRecord, rw)
+		supporterRecord = append(supporterRecord, &record)
+	}
+	var totalDonation float64 = 0
+
+	for _, v := range supporterRecord {
+		totalDonation += v.Donate
+	}
+	if len(supporterRecord) <= 0 {
+		middlewares.SuccessRespond(nil, rw)
+		return
+	}
+
+	supporterRecord[0].AverageDonation = totalDonation / float64(len(supporterRecord))
+
+	middlewares.SuccessRespond(supporterRecord[0], rw)
 })
