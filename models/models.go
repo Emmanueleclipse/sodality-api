@@ -44,6 +44,7 @@ type GetAllCreatorsResp struct {
 	Bio            string   `json:"bio" bson:"bio,omitempty"`
 	Avatar         string   `json:"avatar" bson:"avatar,omitempty"`
 	Dash           string   `json:"dash" bson:"dash,omitempty"`
+	ProfileImage   string   `json:"profile_image,omitempty" bson:"profile_image,omitempty"`
 	HeaderImage    string   `json:"header_image" bson:"header_image,omitempty"`
 	Title          string   `json:"title" bson:"title,omitempty"`
 	SubTitle       string   `json:"subtitle" bson:"subtitle,omitempty"`
