@@ -70,7 +70,7 @@ var UploadFile = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	url := "http://18.117.99.208:2000/api/v1/file/upload"
+	url := "http://18.117.141.216:2000/api/v1/file/upload"
 
 	method := "POST"
 
